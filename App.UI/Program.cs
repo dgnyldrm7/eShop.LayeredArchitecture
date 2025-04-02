@@ -1,9 +1,9 @@
-using App.UI.Middlewares;
+using App.UI.Extensions;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+// Add services to the container - extension method
+builder.AddServices();
 
 var app = builder.Build();
 
@@ -15,19 +15,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-
-app.UseStaticFiles();
-
-app.UseRouting();
-
-//add Middleware
-app.UseMiddleware<AuthenticationMiddleware>();
-
-app.UseAuthentication();
-
-app.UseAuthorization();
-
-app.MapRazorPages();
+// Add Middlewares - extension method
+app.AddMiddlewares();
 
 app.Run();

@@ -1,6 +1,4 @@
-﻿using App.Core.Entities;
-using App.Services.DTOs.Product;
-using AutoMapper;
+﻿using AutoMapper;
 
 namespace App.Services.Mappings
 {
@@ -8,7 +6,7 @@ namespace App.Services.Mappings
     {
         public AppMapping()
         {
-            CreateMap<Product, ProductDto>();
+            //
         }
     }
 }
