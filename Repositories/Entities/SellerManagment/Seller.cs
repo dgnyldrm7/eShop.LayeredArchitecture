@@ -1,4 +1,5 @@
 ﻿using App.Core.Entities.ProductManagment;
+using App.Core.Entities.PromotionManagment;
 
 namespace App.Core.Entities.SellerManagment
 {
@@ -17,5 +18,7 @@ namespace App.Core.Entities.SellerManagment
 
         // Navigation properties
         public List<Answer> Answers { get; set; } = new();
+        public List<Product> Products { get; set; } = new();
+        public List<Coupon> Coupons { get; set; } = new();
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace App.Core.Entities.PromotionManagment
+﻿using App.Core.Entities.SellerManagment;
+
+namespace App.Core.Entities.PromotionManagment
 {
     public class Coupon
     {
@@ -10,5 +12,9 @@
         public bool IsActive { get; set; } = true;
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+        //navigation properties
+        public int SellerId { get; set; } = default!;
+        public Seller Seller { get; set; } = new();
     }
 }

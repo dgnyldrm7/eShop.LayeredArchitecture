@@ -1,4 +1,6 @@
 ﻿using App.Core.Entities.OrderManagment;
+using App.Core.Entities.SellerManagment;
+using App.Core.Entities.UserManagment;
 
 namespace App.Core.Entities.ProductManagment
 {
@@ -14,10 +16,12 @@ namespace App.Core.Entities.ProductManagment
         public string BranName { get; set; } = default!;
         public string FirstPhotoUrl { get; set; } = default!;
         public decimal RegularPrice { get; set; }
-        public decimal DiscountPrice { get; set; }
+        public decimal DiscountPrice { get; set; }         
         // Navigation properties
-
-        public List<Question>? Questions { get; set; } 
+        public int SellerId { get; set; } = default!;
+        public Seller Seller { get; set; } = new();
+        public List<CartItem>? CartItems { get; set; }
+        public List<Question>? Questions { get; set; }  
         public List<OrderItem> OrderItems { get; set; } = new();
         public List<ProductPhoto> Images { get; set; } = new();
         public List<Rating> Ratings { get; set; } = new();
