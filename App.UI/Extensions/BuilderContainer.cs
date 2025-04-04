@@ -1,6 +1,7 @@
 ﻿using App.Core.Entities.UserManagment;
 using App.Persistance.DbContext;
 using App.Services.Options;
+using App.UI.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -16,13 +17,16 @@ namespace App.UI.Extensions
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            // Add services to the container. For example: Exception Handler
+            builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
             // Add services to the container. For example: Options Pattern
             builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("ConnectionStrings"));
 
             //DbContext Configuration
             builder.Services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(_connectionStrings?.Value.SqlServer);
+                options.UseSqlServer(_connectionStrings.Value.SqlServer);
             });
 
             //Identity Configuration

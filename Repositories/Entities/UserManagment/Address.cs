@@ -10,8 +10,6 @@
         public string PhoneNumber { get; set; } = default!;
         public string ReceiverName { get; set; } = default!;
         public bool IsDefault { get; set; } = false;
-
-        // Navigation properties
         public int UserId { get; set; }
         public AppUser User { get; set; } = new();
     }

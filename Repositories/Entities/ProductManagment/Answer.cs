@@ -14,5 +14,6 @@ namespace App.Core.Entities.ProductManagment
         public AppUser User { get; set; } = new();
         public int QuestionId { get; set; }
         public Question Question { get; set; } = new();
+
     }
 }

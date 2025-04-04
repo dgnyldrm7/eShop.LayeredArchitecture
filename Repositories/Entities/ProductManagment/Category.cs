@@ -7,4 +7,4 @@
         public string Slug { get; set; } = default!;
         public List<Product> Products { get; set; } = new();
     }
-}
+} 

@@ -1,4 +1,4 @@
-﻿using App.Core.Entities.UserManagment;
+﻿ using App.Core.Entities.UserManagment;
 
 namespace App.Core.Entities.ProductManagment
 {
@@ -6,8 +6,6 @@ namespace App.Core.Entities.ProductManagment
     {
         public int Id { get; set; }
         public string Content { get; set; } = default!;
-
-
         // Navigation properties
         public int UserId { get; set; }
         public AppUser User { get; set; } = new();
