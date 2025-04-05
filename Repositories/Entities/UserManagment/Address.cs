@@ -11,6 +11,6 @@
         public string ReceiverName { get; set; } = default!;
         public bool IsDefault { get; set; } = false;
         public int UserId { get; set; }
-        public AppUser User { get; set; } = new();
+        public AppUser AppUser { get; set; } = new();
     }
 }

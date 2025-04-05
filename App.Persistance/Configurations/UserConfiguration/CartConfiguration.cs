@@ -8,7 +8,11 @@ namespace App.Persistance.Configurations.UserConfiguration
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(c => c.Id);
+
+            builder.HasOne(c => c.AppUser)
+                   .WithMany(u => u.Carts)
+                   .HasForeignKey(c => c.UserId);
         }
     }
 }

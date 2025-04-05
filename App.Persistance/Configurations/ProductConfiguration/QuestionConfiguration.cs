@@ -8,7 +8,12 @@ namespace App.Persistance.Configurations.ProductConfiguration
     {
         public void Configure(EntityTypeBuilder<Question> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(s => s.Id);
+
+            builder.HasOne(s => s.Answer)
+                .WithOne(s => s.Question)
+                .HasForeignKey<Answer>(s => s.QuestionId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

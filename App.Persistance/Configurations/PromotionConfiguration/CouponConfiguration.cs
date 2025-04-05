@@ -8,7 +8,12 @@ namespace App.Persistance.Configurations.PromotionConfiguration
     {
         public void Configure(EntityTypeBuilder<Coupon> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(c => c.Id);
+
+            builder.HasOne(c => c.Seller)
+                   .WithMany(s => s.Coupons)
+                   .HasForeignKey(c => c.SellerId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

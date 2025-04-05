@@ -23,4 +23,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SeedData\UserSeed\" />
+    <Folder Include="SeedData\PromotionSeed\" />
+    <Folder Include="SeedData\ProductSeed\" />
+  </ItemGroup>
+
 </Project>

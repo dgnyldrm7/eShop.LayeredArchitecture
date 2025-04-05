@@ -8,7 +8,7 @@ namespace App.Persistance.Configurations.OrderConfiguration
     {
         public void Configure(EntityTypeBuilder<Shipping> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(s => s.Id);
         }
     }
 }

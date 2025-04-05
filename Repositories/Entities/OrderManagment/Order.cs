@@ -1,4 +1,4 @@
-﻿ using App.Core.Entities.UserManagment;
+﻿using App.Core.Entities.UserManagment;
 using App.Core.Enums;
 
 namespace App.Core.Entities.OrderManagment
@@ -14,5 +14,7 @@ namespace App.Core.Entities.OrderManagment
         public int PaymentId { get; set; }
         public Payment Payment { get; set; } = new();
         public List<OrderItem> OrderItems { get; set; } = new();
+        public int ShippingId { get; set; }
+        public Shipping Shipping { get; set; } = new();
     }
 }

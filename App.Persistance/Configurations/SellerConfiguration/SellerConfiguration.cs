@@ -8,7 +8,7 @@ namespace App.Persistance.Configurations.SellerConfiguration
     {
         public void Configure(EntityTypeBuilder<Seller> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(s => s.Id);
         }
     }
 }

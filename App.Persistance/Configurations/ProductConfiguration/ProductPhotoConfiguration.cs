@@ -8,7 +8,7 @@ namespace App.Persistance.Configurations.ProductConfiguration
     {
         public void Configure(EntityTypeBuilder<ProductPhoto> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(s => s.Id);
         }
     }
 }

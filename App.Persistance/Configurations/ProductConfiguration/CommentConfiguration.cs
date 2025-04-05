@@ -8,7 +8,7 @@ namespace App.Persistance.Configurations.ProductConfiguration.ProductConfigurati
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(s => s.Id);
         }
     }
 }

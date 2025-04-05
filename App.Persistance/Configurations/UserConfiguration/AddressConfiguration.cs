@@ -8,7 +8,12 @@ namespace App.Persistance.Configurations.UserConfiguration
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(a => a.Id);
+
+            builder.HasOne(a => a.AppUser)
+                   .WithMany(u => u.Addresses)
+                   .HasForeignKey(a => a.UserId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
