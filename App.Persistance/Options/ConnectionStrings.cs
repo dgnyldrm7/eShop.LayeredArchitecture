@@ -1,4 +1,4 @@
-﻿namespace App.Services.Options
+﻿namespace App.Persistance.Options
 {
     public class ConnectionStrings
     {

@@ -8,7 +8,7 @@ namespace App.Persistance.Configurations.UserConfiguration
     {
         public void Configure(EntityTypeBuilder<AppRole> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(s => s.Id);
         }
     }
 }
