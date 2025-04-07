@@ -13,12 +13,12 @@ namespace App.Persistance.SeedData.OrderSeed
             new Order
             {
                 Id = 1,
-                UserId = 1,
+                UserId = "1",
                 Status = OrderStatus.Shipped,
                 TotalAmount = 100.00m,
                 OrderDate = DateTime.UtcNow,
                 PaymentId = 1,
-                ShippingId = 1
+                ShippingId = 1,                
             }
                     
         );

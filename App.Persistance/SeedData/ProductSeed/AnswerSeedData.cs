@@ -10,7 +10,7 @@ namespace App.Persistance.SeedData.ProductSeed
         {
             builder.HasData(
             new Answer
-            {
+            {                
                 Id = 1,
                 SellerId = 1,
                 QuestionId = 1,

@@ -12,7 +12,7 @@ namespace App.Persistance.SeedData.UserSeed
             new Cart
             {
                 Id = 1,
-                UserId = 1,
+                UserId = "1"
             }    
             );
         }

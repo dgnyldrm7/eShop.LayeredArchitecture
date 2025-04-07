@@ -10,7 +10,7 @@ namespace App.Persistance.SeedData.SellerSeed
         {
             builder.HasData(
             new Seller
-            {
+            {                
                 Id = 1,
                 FirstName = "John",
                 LastName = "Doe",

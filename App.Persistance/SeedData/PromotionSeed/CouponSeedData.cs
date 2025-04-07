@@ -10,7 +10,7 @@ namespace App.Persistance.SeedData.PromotionSeed
         {
             builder.HasData(
             new Coupon
-            {
+            {                
                 Id = 1,
                 SellerId = 1,                
                 Code = "COUPON100",

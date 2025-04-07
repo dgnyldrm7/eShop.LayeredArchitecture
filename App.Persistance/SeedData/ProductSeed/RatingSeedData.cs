@@ -10,10 +10,10 @@ namespace App.Persistance.SeedData.ProductSeed
         {
             builder.HasData(
             new Rating
-            {
+            {                
                 Id = 1,
                 ProductId = 1,
-                UserId = 1,
+                UserId = "1",
                 Score = 5,              
             });
         }

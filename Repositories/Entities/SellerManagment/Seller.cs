@@ -15,8 +15,8 @@ namespace App.Core.Entities.SellerManagment
         public string Address { get; set; } = default!;
         public string LogoUrl { get; set; } = default!;
         public string BannerUrl { get; set; } = default!;
-        public List<Answer> Answers { get; set; } = new();
-        public List<Product> Products { get; set; } = new();
-        public List<Coupon> Coupons { get; set; } = new();
+        public List<Answer> Answers { get; set; }
+        public List<Product> Products { get; set; }
+        public List<Coupon> Coupons { get; set; }
     }
 }

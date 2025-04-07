@@ -9,10 +9,10 @@ namespace App.Core.Entities.PromotionManagment
         public decimal DiscountAmount { get; set; }
         public int UsageLimit { get; set; }
         public int UsedCount { get; set; }
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int SellerId { get; set; } = default!;
-        public Seller Seller { get; set; } = new();
+        public Seller Seller { get; set; }
     }
 }

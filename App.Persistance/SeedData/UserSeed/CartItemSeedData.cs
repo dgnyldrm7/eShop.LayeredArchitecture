@@ -14,7 +14,7 @@ namespace App.Persistance.SeedData.UserSeed
                 Id = 1,
                 CartId = 1,
                 ProductId = 1,
-                Quantity = 2,                
+                Quantity = 2                
             }
             );
         }

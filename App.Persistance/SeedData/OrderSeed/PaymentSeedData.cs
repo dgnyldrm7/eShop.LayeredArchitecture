@@ -17,7 +17,7 @@ namespace App.Persistance.SeedData.OrderSeed
                 PaymentMethod = PaymentMethod.CreditCard,
                 Status = PaymentStatus.Success,
                 PaymentDate = DateTime.Now,
-                TransactionId = 1
+                TransactionId = 1                
             }
         );
         }

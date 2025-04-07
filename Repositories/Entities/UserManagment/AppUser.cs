@@ -6,7 +6,7 @@ namespace App.Core.Entities.UserManagment
 {
     public class AppUser : IdentityUser
     {
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }
         public List<Question>? Questions { get; set; }
         public List<Rating>? Ratings { get; set; }

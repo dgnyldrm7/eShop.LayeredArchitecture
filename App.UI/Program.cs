@@ -1,8 +1,5 @@
-using App.Core.Entities.UserManagment;
-using App.Persistance.DbContext;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using App.Persistance.Extensions;
+using App.Persistance.Options;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -10,20 +7,12 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 //Persistance -> AddDbContext and Identity DbContext
-//builder.AddRepositories(builder.Configuration);
+//For IOptions<ConnectionStrings> - bind etme iþlemi
+builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(ConnectionStrings.Key));
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"), sqlServerOptionsAction =>
-    {
-        sqlServerOptionsAction.MigrationsAssembly("App.Persistance");
-    });
-});
+builder.AddDbContexts(builder.Configuration);
 
-//Identity Configuration
-builder.Services.AddIdentity<AppUser, AppRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+builder.AddIdentityServices();
 
 var app = builder.Build();
 
@@ -35,18 +24,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// Add Middlewares - extension method
-app.UseHttpsRedirection();
-
-app.UseStaticFiles();
-
-app.UseRouting();
-
-
-app.UseAuthentication();
-
-app.UseAuthorization();
-
-app.MapRazorPages();
+//Persistance -> All Middleware Congigurations
+app.AddMiddlewares();
 
 app.Run();

@@ -10,7 +10,7 @@ namespace App.Persistance.SeedData.ProductSeed
         {
             builder.HasData(
             new Category
-            {
+            {               
                 Id = 1,
                 Name = "Tekstil",
                 Slug = "tekstil"

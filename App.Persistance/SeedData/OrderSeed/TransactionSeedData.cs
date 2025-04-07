@@ -16,7 +16,7 @@ namespace App.Persistance.SeedData.OrderSeed
                 PaymentId = 1,
                 Amount = 150.00m,
                 TransactionDate = DateTime.Now,
-                Status = TransactionStatus.Success
+                Status = TransactionStatus.Success                
             }
         );
         }

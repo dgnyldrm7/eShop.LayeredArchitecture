@@ -10,10 +10,10 @@ namespace App.Persistance.SeedData.ProductSeed
         {
             builder.HasData(
             new Question
-            {
+            {                
                 Id = 1,
                 ProductId = 1,
-                UserId = 1,
+                UserId = "1",
                 AnswerId = 1,
                 Message = "Bu ürün orijinal mi?",
                 IsAnswered = true,

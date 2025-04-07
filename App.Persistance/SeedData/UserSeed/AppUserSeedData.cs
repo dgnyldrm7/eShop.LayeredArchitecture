@@ -10,7 +10,7 @@ namespace App.Persistance.SeedData.UserSeed
         {
             builder.HasData(
             new AppUser
-            {
+            {                
                 Id = "1",
                 UserName = "testuser",
                 NormalizedUserName = "TESTUSER",

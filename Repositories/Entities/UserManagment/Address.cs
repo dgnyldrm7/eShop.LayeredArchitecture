@@ -9,8 +9,8 @@
         public string ZipCode { get; set; } = default!;
         public string PhoneNumber { get; set; } = default!;
         public string ReceiverName { get; set; } = default!;
-        public bool IsDefault { get; set; } = false;
-        public int UserId { get; set; }
-        public AppUser AppUser { get; set; } = new();
+        public bool IsDefault { get; set; }
+        public string UserId { get; set; } = default!;
+        public AppUser AppUser { get; set; }
     }
 }

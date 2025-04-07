@@ -9,6 +9,7 @@ namespace App.Persistance.Configurations.OrderConfiguration
         public void Configure(EntityTypeBuilder<Payment> builder)
         {
             builder.HasKey(p => p.Id);
+
             builder.HasOne(p => p.Transaction)
                    .WithOne(t => t.Payment)
                    .HasForeignKey<Payment>(p => p.TransactionId)

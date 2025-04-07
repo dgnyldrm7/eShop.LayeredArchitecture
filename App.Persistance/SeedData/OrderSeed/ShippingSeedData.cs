@@ -20,7 +20,7 @@ namespace App.Persistance.SeedData.OrderSeed
                 ZipCode = "62701",
                 ShippingDate = DateTime.UtcNow,
                 DeliveryDate = DateTime.UtcNow.AddDays(5),
-                TrackingNumber = "TRACK123456"
+                TrackingNumber = "TRACK123456"                
             }
         );
         }

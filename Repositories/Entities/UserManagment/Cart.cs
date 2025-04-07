@@ -3,9 +3,9 @@
     public class Cart
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public List<CartItem> CartItems { get; set; } = new();
-        public AppUser AppUser { get; set; } = new();
-        public int TotalPrice => CartItems.Sum(item => item.TotalPrice);
+        public string UserId { get; set; } = default!;
+        public List<CartItem> CartItems { get; set; }
+        public AppUser AppUser { get; set; }
+        //public int TotalPrice => CartItems.Sum(item => item.TotalPrice);
     }
 }

@@ -14,7 +14,7 @@ namespace App.Persistance.SeedData.ProductSeed
                 Id = 1,
                 Message = "Bu ürün çok güzel, tavsiye ederim.",
                 ProductId = 1,
-                UserId = 1,
+                UserId = "1",
                 CreatedAt = DateTime.UtcNow,
             }
             );

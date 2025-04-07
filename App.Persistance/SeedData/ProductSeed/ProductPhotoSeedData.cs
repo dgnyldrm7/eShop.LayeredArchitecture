@@ -10,7 +10,7 @@ namespace App.Persistance.SeedData.ProductSeed
         {
             builder.HasData(
             new ProductPhoto
-            {
+            {                
                 Id = 1,
                 ProductId = 1,
                 Url = "https://example.com/photo1.jpg",

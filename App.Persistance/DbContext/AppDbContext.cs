@@ -35,6 +35,7 @@ namespace App.Persistance.DbContext
 
         //Seller Management
         public DbSet<Seller> sellers { get; set; }
+        public DbSet<Moderator> moderators { get; set; }
 
         //User Management
         public DbSet<Address> addresses { get; set; }

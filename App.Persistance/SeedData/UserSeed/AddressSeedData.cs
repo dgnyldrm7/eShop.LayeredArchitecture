@@ -10,9 +10,9 @@ namespace App.Persistance.SeedData.UserSeed
         {
             builder.HasData(
             new Address
-            {
+            {                
                 Id = 1,
-                UserId = 1,
+                UserId = "1",
                 City = "New York",
                 District = "Manhattan",
                 Street = "5th Avenue",
