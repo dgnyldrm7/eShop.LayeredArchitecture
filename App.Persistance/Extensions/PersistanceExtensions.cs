@@ -43,9 +43,8 @@ namespace App.Persistance.Extensions
             builder.Services.AddScoped<ICacheService, MemoryCacheService>();
         }
 
-        public static void AddDIContainer(this WebApplicationBuilder builder)
+        public static void AddPersistanceDIContainer(this WebApplicationBuilder builder)
         {
-            // Generic repository'yi register et (generic olarak)
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         }
 

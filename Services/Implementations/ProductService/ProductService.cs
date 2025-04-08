@@ -2,7 +2,7 @@
 using App.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace App.Services.Implementations
+namespace App.Services.Implementations.ProductService
 {
     public class ProductService
     {
@@ -15,7 +15,6 @@ namespace App.Services.Implementations
         public ProductService(IGenericRepository<Product> productRepository, ICacheService cacheService, ILogger<ProductService> logger)
         {
             _productRepository = productRepository;
-
             _cacheService = cacheService;
             _logger = logger;
         }
@@ -24,7 +23,7 @@ namespace App.Services.Implementations
         {
             string cacheKey = "products";
 
-            List<Product>? cached =  _cacheService.Get<List<Product>>(cacheKey);
+            List<Product>? cached = _cacheService.Get<List<Product>>(cacheKey);
 
             if (cached != null)
             {

@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <Folder Include="BackgroundJobs\" />
+    <Folder Include="Implementations\SellerService\" />
+    <Folder Include="Implementations\PromotionService\" />
+    <Folder Include="Implementations\OrderService\" />
     <Folder Include="Validators\" />
   </ItemGroup>
 

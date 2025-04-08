@@ -1,6 +1,6 @@
 using App.Persistance.Extensions;
 using App.Persistance.Options;
-using App.Services.Implementations;
+using App.Services.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +17,9 @@ builder.AddIdentityServices();
 
 builder.AddInfrastructureServices();
 
-builder.AddDIContainer();
+builder.AddPersistanceDIContainer();
 
-builder.Services.AddScoped<ProductService>();
+builder.AddServiceDIContainer();
 
 var app = builder.Build();
 
