@@ -43,6 +43,7 @@ namespace App.Persistance.DbContext
         public DbSet<AppUser> appUsers { get; set; }
         public DbSet<Cart> carts { get; set; }
         public DbSet<CartItem> cartItems { get; set; }
+        public DbSet<Favorite> favorites { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

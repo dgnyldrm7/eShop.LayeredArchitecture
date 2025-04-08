@@ -1,3 +1,4 @@
+using App.Services.Implementations;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace App.UI.Pages
@@ -6,14 +7,20 @@ namespace App.UI.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly ProductService _productService;
+
+        public IndexModel(ILogger<IndexModel> logger, ProductService productService)
         {
             _logger = logger;
+
+            _productService = productService;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
+            var products = await _productService.GetAllProductsAsync();
 
+            var data = products.ToList();
         }
     }
 }

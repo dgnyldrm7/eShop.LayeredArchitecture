@@ -14,5 +14,6 @@ namespace App.Core.Entities.UserManagment
         public List<Order>? Orders { get; set; }
         public List<Cart>? Carts { get; set; }
         public List<Comment>? Comments { get; set; }
+        public List<Favorite>? Favorites { get; set; }
     }
 }

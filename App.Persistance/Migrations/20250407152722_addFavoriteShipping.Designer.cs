@@ -4,6 +4,7 @@ using App.Persistance.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250407152722_addFavoriteShipping")]
+    partial class addFavoriteShipping
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,7 +68,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            OrderDate = new DateTime(2025, 4, 7, 15, 29, 33, 325, DateTimeKind.Utc).AddTicks(6230),
+                            OrderDate = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(8457),
                             PaymentId = 1,
                             ShippingId = 1,
                             Status = 1,
@@ -148,7 +151,7 @@ namespace App.Persistance.Migrations
                         {
                             Id = 1,
                             OrderId = 1,
-                            PaymentDate = new DateTime(2025, 4, 7, 18, 29, 33, 325, DateTimeKind.Local).AddTicks(6440),
+                            PaymentDate = new DateTime(2025, 4, 7, 18, 27, 21, 699, DateTimeKind.Local).AddTicks(8664),
                             PaymentMethod = 0,
                             Status = 5,
                             TransactionId = 1
@@ -207,9 +210,9 @@ namespace App.Persistance.Migrations
                             Address = "123 Main St, Springfield, IL",
                             City = "Springfield",
                             CompanyName = "MNG CARGO",
-                            DeliveryDate = new DateTime(2025, 4, 12, 15, 29, 33, 325, DateTimeKind.Utc).AddTicks(6661),
+                            DeliveryDate = new DateTime(2025, 4, 12, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(8850),
                             OrderId = 1,
-                            ShippingDate = new DateTime(2025, 4, 7, 15, 29, 33, 325, DateTimeKind.Utc).AddTicks(6660),
+                            ShippingDate = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(8850),
                             State = "IL",
                             TrackingNumber = "TRACK123456",
                             ZipCode = "62701"
@@ -247,7 +250,7 @@ namespace App.Persistance.Migrations
                             Amount = 150.00m,
                             PaymentId = 1,
                             Status = 1,
-                            TransactionDate = new DateTime(2025, 4, 7, 18, 29, 33, 325, DateTimeKind.Local).AddTicks(6871)
+                            TransactionDate = new DateTime(2025, 4, 7, 18, 27, 21, 699, DateTimeKind.Local).AddTicks(9052)
                         });
                 });
 
@@ -285,7 +288,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 7, 15, 29, 33, 325, DateTimeKind.Utc).AddTicks(7070),
+                            CreatedAt = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(9236),
                             Message = "Evet, bu ürün yeşil renklidir efendim !!",
                             QuestionId = 1,
                             SellerId = 1
@@ -353,7 +356,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 7, 15, 29, 33, 325, DateTimeKind.Utc).AddTicks(7648),
+                            CreatedAt = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(9578),
                             Message = "Bu ürün çok güzel, tavsiye ederim.",
                             ProductId = 1,
                             UserId = "1"
@@ -594,10 +597,10 @@ namespace App.Persistance.Migrations
                             Id = 1,
                             Code = "COUPON100",
                             DiscountAmount = 100m,
-                            EndDate = new DateTime(2025, 5, 7, 15, 29, 33, 325, DateTimeKind.Utc).AddTicks(8552),
+                            EndDate = new DateTime(2025, 5, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(700),
                             IsActive = true,
                             SellerId = 1,
-                            StartDate = new DateTime(2025, 4, 7, 15, 29, 33, 325, DateTimeKind.Utc).AddTicks(8551),
+                            StartDate = new DateTime(2025, 4, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(699),
                             UsageLimit = 10,
                             UsedCount = 0
                         });
@@ -869,8 +872,8 @@ namespace App.Persistance.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8a9e0c5a-0b2e-4499-b706-5c1771a2de03",
-                            CreatedDate = new DateTime(2025, 4, 7, 15, 29, 33, 326, DateTimeKind.Utc).AddTicks(283),
+                            ConcurrencyStamp = "e15a6208-39b7-428c-9903-b49dea05d33c",
+                            CreatedDate = new DateTime(2025, 4, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(2234),
                             Email = "test@example.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -880,7 +883,7 @@ namespace App.Persistance.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEC4tNDZ4Q3kuvHQGgXV6mkzUayYGuXl0f3kRU6dPFE0Uj6gYX4ZmuCN6PMIqP6ZxDQ==",
                             PhoneNumber = "+905551112233",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "296ae950-f1ea-4244-81fa-68a9df95e3c3",
+                            SecurityStamp = "7d228117-7a91-4690-b102-7c3a2b6e023e",
                             TwoFactorEnabled = false,
                             UserName = "testuser"
                         });
@@ -970,13 +973,13 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("favorites");
+                    b.ToTable("Favorite");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 7, 15, 29, 33, 326, DateTimeKind.Utc).AddTicks(896),
+                            CreatedAt = new DateTime(2025, 4, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(2774),
                             ProductId = 1,
                             UserId = "1"
                         });
