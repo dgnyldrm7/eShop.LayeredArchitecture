@@ -1,5 +1,6 @@
 using App.Persistance.Extensions;
 using App.Persistance.Options;
+using App.Services.Implementations;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,12 @@ builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(C
 builder.AddDbContexts(builder.Configuration);
 
 builder.AddIdentityServices();
+
+builder.AddInfrastructureServices();
+
+builder.AddDIContainer();
+
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 

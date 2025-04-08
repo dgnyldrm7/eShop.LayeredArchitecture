@@ -1,5 +1,8 @@
 ﻿using App.Core.Entities.UserManagment;
+using App.Core.Interfaces;
+using App.Infrastructure.Caching;
 using App.Persistance.DbContext;
+using App.Persistance.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +35,21 @@ namespace App.Persistance.Extensions
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
         }
-        
+
+        public static void AddInfrastructureServices(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddMemoryCache();
+
+            builder.Services.AddScoped<ICacheService, MemoryCacheService>();
+        }
+
+        public static void AddDIContainer(this WebApplicationBuilder builder)
+        {
+            // Generic repository'yi register et (generic olarak)
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        }
+
+
         public static void AddMiddlewares(this WebApplication app)
         {
             app.UseHttpsRedirection();

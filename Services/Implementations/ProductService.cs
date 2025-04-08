@@ -1,20 +1,45 @@
 ﻿using App.Core.Entities.ProductManagment;
-using App.Persistance.Repositories;
+using App.Core.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace App.Services.Implementations
 {
     public class ProductService
     {
-        private readonly GenericRepository<Product> _productRepository;
+        private readonly ILogger<ProductService> _logger;
 
-        public ProductService(GenericRepository<Product> productRepository)
+        private readonly IGenericRepository<Product> _productRepository;
+
+        private readonly ICacheService _cacheService;
+
+        public ProductService(IGenericRepository<Product> productRepository, ICacheService cacheService, ILogger<ProductService> logger)
         {
             _productRepository = productRepository;
+
+            _cacheService = cacheService;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            return await _productRepository.GetAllAsync();
+            string cacheKey = "products";
+
+            List<Product>? cached =  _cacheService.Get<List<Product>>(cacheKey);
+
+            if (cached != null)
+            {
+                _logger.LogInformation("Products are already in cache.");
+
+                return cached;
+            }
+
+            var products = await _productRepository.GetAllAsync();
+
+            _cacheService.Set(cacheKey, products.ToList(), TimeSpan.FromMinutes(5));
+
+            _logger.LogInformation("Products are fetched from database and cached.");
+
+            return products;
         }
 
         public async Task<Product?> GetProductByIdAsync(int id)

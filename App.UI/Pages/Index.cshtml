@@ -7,4 +7,13 @@
 <div class="text-center">
     <h1 class="display-4">morlido.com</h1>
     <p>Yapım aşamasında!</p>
+
+    @foreach(var data in Model.Products!)
+    {
+        <p>@data.Name</p>
+
+        <p>@data.DiscountPrice</p>
+
+        <p>@data.RegularPrice</p>
+    }
 </div>
