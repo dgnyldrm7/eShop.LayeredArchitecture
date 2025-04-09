@@ -12,6 +12,12 @@ namespace App.Persistance.Configurations.ProductConfiguration
 
             builder.ToTable("Products");
 
+            builder.Property(p => p.DiscountPrice)
+                .HasColumnType("decimal(18,2)");
+
+            builder.Property(p => p.RegularPrice)
+                .HasColumnType("decimal(18,2)");
+
             builder.HasOne(p => p.Seller)
                    .WithMany(s => s.Products)
                    .HasForeignKey(p => p.SellerId)

@@ -1,12 +1,12 @@
-﻿using App.Core.Entities.OrderManagment;
+﻿using App.Core.Common.Entities;
+using App.Core.Entities.OrderManagment;
 using App.Core.Entities.SellerManagment;
 using App.Core.Entities.UserManagment;
 
 namespace App.Core.Entities.ProductManagment
 {
-    public sealed class Product
+    public class Product : EntityBase<int>
     {
-        public int Id { get; set; }
         public int CategoryId { get; set; } = default!;
         public string Name { get; set; } = default!;        
         public string Slug { get; set; } = default!;

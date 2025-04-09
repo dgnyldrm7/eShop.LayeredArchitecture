@@ -14,8 +14,7 @@ namespace App.Persistance.SeedData.ProductSeed
                 Id = 1,
                 SellerId = 1,
                 QuestionId = 1,
-                Message = "Evet, bu ürün yeşil renklidir efendim !!",
-                CreatedAt = DateTime.UtcNow,
+                Message = "Evet, bu ürün yeşil renklidir efendim !!"
             }
           );
         }

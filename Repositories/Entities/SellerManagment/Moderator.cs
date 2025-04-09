@@ -1,8 +1,9 @@
-﻿namespace App.Core.Entities.SellerManagment
+﻿using App.Core.Common.Entities;
+
+namespace App.Core.Entities.SellerManagment
 {
-    public class Moderator
+    public class Moderator : EntityBase<int>
     {
-        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? UserName { get; set; }

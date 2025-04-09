@@ -12,6 +12,9 @@ namespace App.Persistance.Configurations.PromotionConfiguration
 
             builder.ToTable("Coupons");
 
+            builder.Property(c => c.DiscountAmount)
+                .HasColumnType("decimal(18,2)");
+
             builder.HasOne(c => c.Seller)
                    .WithMany(s => s.Coupons)
                    .HasForeignKey(c => c.SellerId)

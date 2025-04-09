@@ -62,7 +62,8 @@ namespace App.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Slug = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Slug = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -80,7 +81,8 @@ namespace App.Persistance.Migrations
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -93,15 +95,16 @@ namespace App.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BannerUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BannerUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -122,7 +125,8 @@ namespace App.Persistance.Migrations
                     State = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ShippingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -138,7 +142,8 @@ namespace App.Persistance.Migrations
                     PaymentId = table.Column<int>(type: "int", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -172,14 +177,15 @@ namespace App.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    District = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReceiverName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    District = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReceiverName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDefault = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -283,7 +289,8 @@ namespace App.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -292,8 +299,7 @@ namespace App.Persistance.Migrations
                         name: "FK_Carts_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -302,14 +308,15 @@ namespace App.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DiscountAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     UsageLimit = table.Column<int>(type: "int", nullable: false),
                     UsedCount = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SellerId = table.Column<int>(type: "int", nullable: false)
+                    SellerId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -339,7 +346,8 @@ namespace App.Persistance.Migrations
                     FirstPhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RegularPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DiscountPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SellerId = table.Column<int>(type: "int", nullable: false)
+                    SellerId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -368,7 +376,8 @@ namespace App.Persistance.Migrations
                     PaymentMethod = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TransactionId = table.Column<int>(type: "int", nullable: false)
+                    TransactionId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -392,7 +401,8 @@ namespace App.Persistance.Migrations
                     IsUsed = table.Column<bool>(type: "bit", nullable: false),
                     AssignedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UsedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -419,7 +429,8 @@ namespace App.Persistance.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CartId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -447,7 +458,7 @@ namespace App.Persistance.Migrations
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -474,7 +485,7 @@ namespace App.Persistance.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -500,7 +511,8 @@ namespace App.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -523,7 +535,8 @@ namespace App.Persistance.Migrations
                     IsAnswered = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    AnswerId = table.Column<int>(type: "int", nullable: false)
+                    AnswerId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -550,7 +563,8 @@ namespace App.Persistance.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Score = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -580,7 +594,8 @@ namespace App.Persistance.Migrations
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PaymentId = table.Column<int>(type: "int", nullable: false),
-                    ShippingId = table.Column<int>(type: "int", nullable: false)
+                    ShippingId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -612,9 +627,9 @@ namespace App.Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     QuestionId = table.Column<int>(type: "int", nullable: false),
-                    SellerId = table.Column<int>(type: "int", nullable: false)
+                    SellerId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -642,7 +657,8 @@ namespace App.Persistance.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -673,107 +689,107 @@ namespace App.Persistance.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedDate", "Email", "EmailConfirmed", "IsActive", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "b692f577-11b9-4406-beca-7e226edc1402", new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5267), "test@example.com", true, true, false, null, "TEST@EXAMPLE.COM", "TESTUSER", "AQAAAAEAACcQAAAAEC4tNDZ4Q3kuvHQGgXV6mkzUayYGuXl0f3kRU6dPFE0Uj6gYX4ZmuCN6PMIqP6ZxDQ==", "+905551112233", true, "41dba2a0-19e2-4b25-92f5-a2123e7e0363", false, "testuser" });
+                values: new object[] { "1", 0, "d9ddbcb8-b28f-48be-ae8b-e17c4ba2988a", new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(9412), "test@example.com", true, true, false, null, "TEST@EXAMPLE.COM", "TESTUSER", "AQAAAAEAACcQAAAAEC4tNDZ4Q3kuvHQGgXV6mkzUayYGuXl0f3kRU6dPFE0Uj6gYX4ZmuCN6PMIqP6ZxDQ==", "+905551112233", true, "f7544f58-3219-4cc2-87b4-050f9c5c47c6", false, "testuser" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
-                columns: new[] { "Id", "Name", "Slug" },
-                values: new object[] { 1, "Tekstil", "tekstil" });
+                columns: new[] { "Id", "CreatedAt", "Name", "Slug" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(4676), "Tekstil", "tekstil" });
 
             migrationBuilder.InsertData(
                 table: "Moderators",
-                columns: new[] { "Id", "Email", "Name", "Password", "PhoneNumber", "Surname", "UserName" },
-                values: new object[] { 1, "hasanali@gmail.com", "Hasan", "password123", "1234567890", "Ali", "hasan" });
+                columns: new[] { "Id", "CreatedAt", "Email", "Name", "Password", "PhoneNumber", "Surname", "UserName" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7768), "hasanali@gmail.com", "Hasan", "password123", "1234567890", "Ali", "hasan" });
 
             migrationBuilder.InsertData(
                 table: "Sellers",
-                columns: new[] { "Id", "Address", "BannerUrl", "Email", "FirstName", "LastName", "LogoUrl", "Password", "Phone", "UserName" },
-                values: new object[] { 1, "123 Main St, City, Country", "https://example.com/banner.jpg", "test@gmail.com", "John", "Doe", "https://example.com/logo.jpg", "password123", "1234567890", "johndoe" });
+                columns: new[] { "Id", "Address", "BannerUrl", "CreatedAt", "Email", "FirstName", "LastName", "LogoUrl", "Password", "Phone", "UserName" },
+                values: new object[] { 1, "123 Main St, City, Country", "https://example.com/banner.jpg", new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(8099), "test@gmail.com", "John", "Doe", "https://example.com/logo.jpg", "password123", "1234567890", "johndoe" });
 
             migrationBuilder.InsertData(
                 table: "Shippings",
-                columns: new[] { "Id", "Address", "City", "CompanyName", "DeliveryDate", "OrderId", "ShippingDate", "State", "TrackingNumber", "ZipCode" },
-                values: new object[] { 1, "123 Main St, Springfield, IL", "Springfield", "MNG CARGO", new DateTime(2025, 4, 14, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1139), 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1138), "IL", "TRACK123456", "62701" });
+                columns: new[] { "Id", "Address", "City", "CompanyName", "CreatedAt", "DeliveryDate", "OrderId", "ShippingDate", "State", "TrackingNumber", "ZipCode" },
+                values: new object[] { 1, "123 Main St, Springfield, IL", "Springfield", "MNG CARGO", new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2866), new DateTime(2025, 4, 14, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2869), 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2869), "IL", "TRACK123456", "62701" });
 
             migrationBuilder.InsertData(
                 table: "Transactions",
-                columns: new[] { "Id", "Amount", "PaymentId", "Status", "TransactionDate" },
-                values: new object[] { 1, 150.00m, 1, 1, new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(1341) });
+                columns: new[] { "Id", "Amount", "CreatedAt", "PaymentId", "Status", "TransactionDate" },
+                values: new object[] { 1, 150.00m, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(3326), 1, 1, new DateTime(2025, 4, 10, 0, 58, 35, 450, DateTimeKind.Local).AddTicks(3329) });
 
             migrationBuilder.InsertData(
                 table: "Addresses",
-                columns: new[] { "Id", "City", "District", "IsDefault", "PhoneNumber", "ReceiverName", "Street", "UserId", "ZipCode" },
-                values: new object[] { 1, "New York", "Manhattan", true, "123-456-7890", "John Doe", "5th Avenue", "1", "10001" });
+                columns: new[] { "Id", "City", "CreatedAt", "District", "IsDefault", "PhoneNumber", "ReceiverName", "Street", "UserId", "ZipCode" },
+                values: new object[] { 1, "New York", new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(8439), "Manhattan", true, "123-456-7890", "John Doe", "5th Avenue", "1", "10001" });
 
             migrationBuilder.InsertData(
                 table: "Carts",
-                columns: new[] { "Id", "UserId" },
-                values: new object[] { 1, "1" });
+                columns: new[] { "Id", "CreatedAt", "UserId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 451, DateTimeKind.Utc).AddTicks(69), "1" });
 
             migrationBuilder.InsertData(
                 table: "Coupons",
-                columns: new[] { "Id", "Code", "DiscountAmount", "EndDate", "IsActive", "SellerId", "StartDate", "UsageLimit", "UsedCount" },
-                values: new object[] { 1, "COUPON100", 100m, new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3223), true, 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3222), 10, 0 });
+                columns: new[] { "Id", "Code", "CreatedAt", "DiscountAmount", "EndDate", "IsActive", "SellerId", "StartDate", "UsageLimit", "UsedCount" },
+                values: new object[] { 1, "COUPON100", new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6942), 100m, new DateTime(2025, 5, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6948), true, 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6948), 10, 0 });
 
             migrationBuilder.InsertData(
                 table: "Payments",
-                columns: new[] { "Id", "OrderId", "PaymentDate", "PaymentMethod", "Status", "TransactionId" },
-                values: new object[] { 1, 1, new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(927), 0, 5, 1 });
+                columns: new[] { "Id", "CreatedAt", "OrderId", "PaymentDate", "PaymentMethod", "Status", "TransactionId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2484), 1, new DateTime(2025, 4, 10, 0, 58, 35, 450, DateTimeKind.Local).AddTicks(2496), 0, 5, 1 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "BranName", "CategoryId", "Description", "DiscountPrice", "FirstPhotoUrl", "IsActive", "IsShippingFree", "Name", "RegularPrice", "SellerId", "Slug", "Stock" },
-                values: new object[] { 1, "Brand A", 1, "Description for Product 1", 19.99m, "https://example.com/product1.jpg", true, false, "Product 1", 29.99m, 1, "product-1", 100 });
+                columns: new[] { "Id", "BranName", "CategoryId", "CreatedAt", "Description", "DiscountPrice", "FirstPhotoUrl", "IsActive", "IsShippingFree", "Name", "RegularPrice", "SellerId", "Slug", "Stock" },
+                values: new object[] { 1, "Brand A", 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(5912), "Description for Product 1", 19.99m, "https://example.com/product1.jpg", true, false, "Product 1", 29.99m, 1, "product-1", 100 });
 
             migrationBuilder.InsertData(
                 table: "CartItems",
-                columns: new[] { "Id", "CartId", "ProductId", "Quantity" },
-                values: new object[] { 1, 1, 1, 2 });
+                columns: new[] { "Id", "CartId", "CreatedAt", "ProductId", "Quantity" },
+                values: new object[] { 1, 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(9756), 1, 2 });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "Id", "CreatedAt", "Message", "ProductId", "UserId" },
-                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(2317), "Bu ürün çok güzel, tavsiye ederim.", 1, "1" });
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(5174), "Bu ürün çok güzel, tavsiye ederim.", 1, "1" });
 
             migrationBuilder.InsertData(
                 table: "Favorites",
                 columns: new[] { "Id", "CreatedAt", "ProductId", "UserId" },
-                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5842), 1, "1" });
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 451, DateTimeKind.Utc).AddTicks(435), 1, "1" });
 
             migrationBuilder.InsertData(
                 table: "Orders",
-                columns: new[] { "Id", "OrderDate", "PaymentId", "ShippingId", "Status", "TotalAmount", "UserId" },
-                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(728), 1, 1, 1, 100.00m, "1" });
+                columns: new[] { "Id", "CreatedAt", "OrderDate", "PaymentId", "ShippingId", "Status", "TotalAmount", "UserId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2129), new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2131), 1, 1, 1, 100.00m, "1" });
 
             migrationBuilder.InsertData(
                 table: "ProductPhotos",
-                columns: new[] { "Id", "ProductId", "Url" },
-                values: new object[] { 1, 1, "https://example.com/photo1.jpg" });
+                columns: new[] { "Id", "CreatedAt", "ProductId", "Url" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(5549), 1, "https://example.com/photo1.jpg" });
 
             migrationBuilder.InsertData(
                 table: "Questions",
-                columns: new[] { "Id", "AnswerId", "IsAnswered", "Message", "ProductId", "UserId" },
-                values: new object[] { 1, 1, true, "Bu ürün orijinal mi?", 1, "1" });
+                columns: new[] { "Id", "AnswerId", "CreatedAt", "IsAnswered", "Message", "ProductId", "UserId" },
+                values: new object[] { 1, 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6246), true, "Bu ürün orijinal mi?", 1, "1" });
 
             migrationBuilder.InsertData(
                 table: "Ratings",
-                columns: new[] { "Id", "ProductId", "Score", "UserId" },
-                values: new object[] { 1, 1, 5, "1" });
+                columns: new[] { "Id", "CreatedAt", "ProductId", "Score", "UserId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6576), 1, 5, "1" });
 
             migrationBuilder.InsertData(
                 table: "UserCoupons",
-                columns: new[] { "Id", "AssignedDate", "CouponId", "ExpirationDate", "IsUsed", "UsedDate", "UserId" },
-                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3451), 1, new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3452), false, new DateTime(2025, 4, 19, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3455), "1" });
+                columns: new[] { "Id", "AssignedDate", "CouponId", "CreatedAt", "ExpirationDate", "IsUsed", "UsedDate", "UserId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7384), 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7382), new DateTime(2025, 5, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7385), false, new DateTime(2025, 4, 19, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7388), "1" });
 
             migrationBuilder.InsertData(
                 table: "Answers",
                 columns: new[] { "Id", "CreatedAt", "Message", "QuestionId", "SellerId" },
-                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1611), "Evet, bu ürün yeşil renklidir efendim !!", 1, 1 });
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(3839), "Evet, bu ürün yeşil renklidir efendim !!", 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "OrderItems",
-                columns: new[] { "Id", "OrderId", "ProductId", "ProductPrice", "Quantity" },
-                values: new object[] { 1, 1, 1, 50.00m, 2 });
+                columns: new[] { "Id", "CreatedAt", "OrderId", "ProductId", "ProductPrice", "Quantity" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(1465), 1, 1, 50.00m, 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_UserId",

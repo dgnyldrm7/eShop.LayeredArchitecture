@@ -13,8 +13,7 @@ namespace App.Persistance.SeedData.UserSeed
             {
                 Id = 1,
                 UserId = "1",
-                ProductId = 1,
-                CreatedAt = DateTime.UtcNow
+                ProductId = 1
             });
         }
     }

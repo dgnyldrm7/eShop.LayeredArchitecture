@@ -8,9 +8,12 @@ namespace App.Persistance.Configurations.OrderConfiguration
     {
         public void Configure(EntityTypeBuilder<Transaction> builder)
         {
-            builder.HasKey(s => s.Id);
+            builder.HasKey(t => t.Id);
 
             builder.ToTable("Transactions");
+
+            builder.Property(t => t.Amount)
+                .HasColumnType("decimal(18,2)");
         }
     }
 }

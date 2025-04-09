@@ -12,6 +12,9 @@ namespace App.Persistance.Configurations.OrderConfiguration
 
             builder.ToTable("Orders");
 
+            builder.Property(o => o.TotalAmount)
+                .HasColumnType("decimal(18,2)");
+
             builder.HasOne(o => o.AppUser)
                    .WithMany(u => u.Orders)
                    .HasForeignKey(o => o.UserId)

@@ -1,16 +1,17 @@
-﻿namespace App.Core.Entities.UserManagment
+﻿using App.Core.Common.Entities;
+
+namespace App.Core.Entities.UserManagment
 {
-    public class Address
+    public class Address : EntityBase<int>
     {
-        public int Id { get; set; }
-        public string City { get; set; } = default!;
-        public string District { get; set; } = default!;
-        public string Street { get; set; } = default!;
-        public string ZipCode { get; set; } = default!;
-        public string PhoneNumber { get; set; } = default!;
-        public string ReceiverName { get; set; } = default!;
+        public string? City { get; set; }
+        public string? District { get; set; }
+        public string? Street { get; set; }
+        public string? ZipCode { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? ReceiverName { get; set; }
         public bool IsDefault { get; set; }
-        public string UserId { get; set; } = default!;
-        public AppUser AppUser { get; set; }
+        public string? UserId { get; set; }
+        public AppUser? AppUser { get; set; }
     }
 }

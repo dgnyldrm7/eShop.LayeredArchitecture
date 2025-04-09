@@ -1,11 +1,12 @@
-﻿namespace App.Core.Entities.UserManagment
+﻿using App.Core.Common.Entities;
+
+namespace App.Core.Entities.UserManagment
 {
-    public class Cart
+    public class Cart : EntityBase<int>
     {
-        public int Id { get; set; }
-        public string UserId { get; set; } = default!;
-        public List<CartItem> CartItems { get; set; }
-        public AppUser AppUser { get; set; }
+        public string? UserId { get; set; }
+        public List<CartItem>? CartItems { get; set; }
+        public AppUser? AppUser { get; set; }
         //public int TotalPrice => CartItems.Sum(item => item.TotalPrice);
     }
 }

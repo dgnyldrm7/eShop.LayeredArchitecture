@@ -14,7 +14,7 @@ namespace App.Persistance.UnitOfWork
 
         public void Dispose()
         {
-            _context.Dispose();
+            // _context.Dispose(); ❌ YAPMA
         }
 
         public async Task BeginTransactionAsync()

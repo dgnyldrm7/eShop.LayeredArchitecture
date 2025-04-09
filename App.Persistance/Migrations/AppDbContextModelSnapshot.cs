@@ -30,6 +30,9 @@ namespace App.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
@@ -65,7 +68,8 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            OrderDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(728),
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2129),
+                            OrderDate = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2131),
                             PaymentId = 1,
                             ShippingId = 1,
                             Status = 1,
@@ -81,6 +85,9 @@ namespace App.Persistance.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -106,6 +113,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(1465),
                             OrderId = 1,
                             ProductId = 1,
                             ProductPrice = 50.00m,
@@ -120,6 +128,9 @@ namespace App.Persistance.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -147,8 +158,9 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2484),
                             OrderId = 1,
-                            PaymentDate = new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(927),
+                            PaymentDate = new DateTime(2025, 4, 10, 0, 58, 35, 450, DateTimeKind.Local).AddTicks(2496),
                             PaymentMethod = 0,
                             Status = 5,
                             TransactionId = 1
@@ -174,6 +186,9 @@ namespace App.Persistance.Migrations
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnType("datetime2");
@@ -207,9 +222,10 @@ namespace App.Persistance.Migrations
                             Address = "123 Main St, Springfield, IL",
                             City = "Springfield",
                             CompanyName = "MNG CARGO",
-                            DeliveryDate = new DateTime(2025, 4, 14, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1139),
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2866),
+                            DeliveryDate = new DateTime(2025, 4, 14, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2869),
                             OrderId = 1,
-                            ShippingDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1138),
+                            ShippingDate = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(2869),
                             State = "IL",
                             TrackingNumber = "TRACK123456",
                             ZipCode = "62701"
@@ -226,6 +242,9 @@ namespace App.Persistance.Migrations
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PaymentId")
                         .HasColumnType("int");
@@ -245,9 +264,10 @@ namespace App.Persistance.Migrations
                         {
                             Id = 1,
                             Amount = 150.00m,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(3326),
                             PaymentId = 1,
                             Status = 1,
-                            TransactionDate = new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(1341)
+                            TransactionDate = new DateTime(2025, 4, 10, 0, 58, 35, 450, DateTimeKind.Local).AddTicks(3329)
                         });
                 });
 
@@ -259,7 +279,7 @@ namespace App.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Message")
@@ -285,7 +305,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1611),
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(3839),
                             Message = "Evet, bu ürün yeşil renklidir efendim !!",
                             QuestionId = 1,
                             SellerId = 1
@@ -299,6 +319,9 @@ namespace App.Persistance.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -314,6 +337,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(4676),
                             Name = "Tekstil",
                             Slug = "tekstil"
                         });
@@ -327,7 +351,7 @@ namespace App.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Message")
@@ -353,7 +377,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(2317),
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(5174),
                             Message = "Bu ürün çok güzel, tavsiye ederim.",
                             ProductId = 1,
                             UserId = "1"
@@ -374,6 +398,9 @@ namespace App.Persistance.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -425,6 +452,7 @@ namespace App.Persistance.Migrations
                             Id = 1,
                             BranName = "Brand A",
                             CategoryId = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(5912),
                             Description = "Description for Product 1",
                             DiscountPrice = 19.99m,
                             FirstPhotoUrl = "https://example.com/product1.jpg",
@@ -446,6 +474,9 @@ namespace App.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -463,6 +494,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(5549),
                             ProductId = 1,
                             Url = "https://example.com/photo1.jpg"
                         });
@@ -478,6 +510,9 @@ namespace App.Persistance.Migrations
 
                     b.Property<int>("AnswerId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("IsAnswered")
                         .HasColumnType("bit");
@@ -506,6 +541,7 @@ namespace App.Persistance.Migrations
                         {
                             Id = 1,
                             AnswerId = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6246),
                             IsAnswered = true,
                             Message = "Bu ürün orijinal mi?",
                             ProductId = 1,
@@ -520,6 +556,9 @@ namespace App.Persistance.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -543,6 +582,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6576),
                             ProductId = 1,
                             Score = 5,
                             UserId = "1"
@@ -558,8 +598,10 @@ namespace App.Persistance.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Code")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("DiscountAmount")
                         .HasColumnType("decimal(18,2)");
@@ -593,11 +635,12 @@ namespace App.Persistance.Migrations
                         {
                             Id = 1,
                             Code = "COUPON100",
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6942),
                             DiscountAmount = 100m,
-                            EndDate = new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3223),
+                            EndDate = new DateTime(2025, 5, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6948),
                             IsActive = true,
                             SellerId = 1,
-                            StartDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3222),
+                            StartDate = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(6948),
                             UsageLimit = 10,
                             UsedCount = 0
                         });
@@ -616,6 +659,9 @@ namespace App.Persistance.Migrations
 
                     b.Property<int>("CouponId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime2");
@@ -641,11 +687,12 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            AssignedDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3451),
+                            AssignedDate = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7384),
                             CouponId = 1,
-                            ExpirationDate = new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3452),
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7382),
+                            ExpirationDate = new DateTime(2025, 5, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7385),
                             IsUsed = false,
-                            UsedDate = new DateTime(2025, 4, 19, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3455),
+                            UsedDate = new DateTime(2025, 4, 19, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7388),
                             UserId = "1"
                         });
                 });
@@ -657,6 +704,9 @@ namespace App.Persistance.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -684,6 +734,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(7768),
                             Email = "hasanali@gmail.com",
                             Name = "Hasan",
                             Password = "password123",
@@ -702,39 +753,33 @@ namespace App.Persistance.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BannerUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LogoUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -747,6 +792,7 @@ namespace App.Persistance.Migrations
                             Id = 1,
                             Address = "123 Main St, City, Country",
                             BannerUrl = "https://example.com/banner.jpg",
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(8099),
                             Email = "test@gmail.com",
                             FirstName = "John",
                             LastName = "Doe",
@@ -766,34 +812,30 @@ namespace App.Persistance.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("District")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDefault")
                         .HasColumnType("bit");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReceiverName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ZipCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -807,6 +849,7 @@ namespace App.Persistance.Migrations
                         {
                             Id = 1,
                             City = "New York",
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(8439),
                             District = "Manhattan",
                             IsDefault = true,
                             PhoneNumber = "123-456-7890",
@@ -936,8 +979,8 @@ namespace App.Persistance.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b692f577-11b9-4406-beca-7e226edc1402",
-                            CreatedDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5267),
+                            ConcurrencyStamp = "d9ddbcb8-b28f-48be-ae8b-e17c4ba2988a",
+                            CreatedDate = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(9412),
                             Email = "test@example.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -947,7 +990,7 @@ namespace App.Persistance.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEC4tNDZ4Q3kuvHQGgXV6mkzUayYGuXl0f3kRU6dPFE0Uj6gYX4ZmuCN6PMIqP6ZxDQ==",
                             PhoneNumber = "+905551112233",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "41dba2a0-19e2-4b25-92f5-a2123e7e0363",
+                            SecurityStamp = "f7544f58-3219-4cc2-87b4-050f9c5c47c6",
                             TwoFactorEnabled = false,
                             UserName = "testuser"
                         });
@@ -961,8 +1004,10 @@ namespace App.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -975,6 +1020,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 451, DateTimeKind.Utc).AddTicks(69),
                             UserId = "1"
                         });
                 });
@@ -989,6 +1035,9 @@ namespace App.Persistance.Migrations
 
                     b.Property<int>("CartId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -1009,6 +1058,7 @@ namespace App.Persistance.Migrations
                         {
                             Id = 1,
                             CartId = 1,
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 450, DateTimeKind.Utc).AddTicks(9756),
                             ProductId = 1,
                             Quantity = 2
                         });
@@ -1022,7 +1072,7 @@ namespace App.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ProductId")
@@ -1043,7 +1093,7 @@ namespace App.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5842),
+                            CreatedAt = new DateTime(2025, 4, 9, 21, 58, 35, 451, DateTimeKind.Utc).AddTicks(435),
                             ProductId = 1,
                             UserId = "1"
                         });
@@ -1352,8 +1402,7 @@ namespace App.Persistance.Migrations
                     b.HasOne("App.Core.Entities.UserManagment.AppUser", "AppUser")
                         .WithMany("Addresses")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("AppUser");
                 });
@@ -1362,9 +1411,7 @@ namespace App.Persistance.Migrations
                 {
                     b.HasOne("App.Core.Entities.UserManagment.AppUser", "AppUser")
                         .WithMany("Carts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("AppUser");
                 });
@@ -1464,20 +1511,17 @@ namespace App.Persistance.Migrations
 
             modelBuilder.Entity("App.Core.Entities.OrderManagment.Payment", b =>
                 {
-                    b.Navigation("Order")
-                        .IsRequired();
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("App.Core.Entities.OrderManagment.Shipping", b =>
                 {
-                    b.Navigation("Order")
-                        .IsRequired();
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("App.Core.Entities.OrderManagment.Transaction", b =>
                 {
-                    b.Navigation("Payment")
-                        .IsRequired();
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("App.Core.Entities.ProductManagment.Category", b =>
