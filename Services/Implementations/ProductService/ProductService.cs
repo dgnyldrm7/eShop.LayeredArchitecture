@@ -1,5 +1,6 @@
 ﻿using App.Core.Entities.ProductManagment;
 using App.Core.Interfaces;
+using App.Core.Interfaces.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
 namespace App.Services.Implementations.ProductService
@@ -12,11 +13,14 @@ namespace App.Services.Implementations.ProductService
 
         private readonly ICacheService _cacheService;
 
-        public ProductService(IGenericRepository<Product> productRepository, ICacheService cacheService, ILogger<ProductService> logger)
+        private readonly IUnitOfWork unitOfWork;
+
+        public ProductService(IGenericRepository<Product> productRepository, ICacheService cacheService, ILogger<ProductService> logger, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
             _cacheService = cacheService;
             _logger = logger;
+            this.unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
@@ -48,17 +52,23 @@ namespace App.Services.Implementations.ProductService
 
         public async Task AddProductAsync(Product product)
         {
-            await _productRepository.AddAsync(product);
+            _productRepository.Add(product);
+
+            await unitOfWork.SaveChangesAsync();
         }
 
         public async Task UpdateProductAsync(Product product)
         {
-            await _productRepository.UpdateAsync(product);
+            _productRepository.Update(product);
+
+            await unitOfWork.SaveChangesAsync();
         }
 
         public async Task DeleteProductAsync(int id)
         {
-            await _productRepository.DeleteAsync(id);
+            _productRepository.Delete(id);
+
+            await unitOfWork.SaveChangesAsync();
         }
     }
 }

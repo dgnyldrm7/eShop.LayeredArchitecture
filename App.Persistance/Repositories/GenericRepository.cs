@@ -17,22 +17,18 @@ namespace App.Persistance.Repositories
             _dbSet = context.Set<T>();
         }
         
-        public async Task AddAsync(T entity)
+        public void Add(T entity)
         {
             _dbSet.Add(entity);
-
-            await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int Id)
+        public void Delete(int Id)
         {
-            var entity = await _dbSet.FindAsync(Id);
+            var entity =  _dbSet.Find(Id);
 
             if (entity != null)
             {
                 _dbSet.Remove(entity);
-
-                await _context.SaveChangesAsync();
             }
         }
 
@@ -51,11 +47,9 @@ namespace App.Persistance.Repositories
             return Task.FromResult(_dbSet.AsQueryable());
         }
 
-        public async Task UpdateAsync(T entity)
+        public void Update(T entity)
         {
             _dbSet.Update(entity);
-
-            await _context.SaveChangesAsync();
         }
     }
 }

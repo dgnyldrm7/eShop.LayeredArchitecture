@@ -1,5 +1,6 @@
 ﻿using App.Core.DTOs;
 using App.Core.Entities.UserManagment;
+using App.Core.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 
 namespace App.Services.Implementations.UserService
@@ -7,15 +8,34 @@ namespace App.Services.Implementations.UserService
     public class UserRegistrationService
     {
         private readonly UserManager<AppUser> _userManager;
+
+        private readonly IUnitOfWork _unitOfWork;
         //private readonly IEmailSender _emailSender;
 
-        public UserRegistrationService(UserManager<AppUser> userManager)
+        public UserRegistrationService(UserManager<AppUser> userManager, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IdentityResult> RegisterUserAsync(RegisterDto model)
         {
+            await _unitOfWork.BeginTransactionAsync();
+
+            try
+            {
+                //Process
+
+                await _unitOfWork.SaveChangesAsync();
+
+                await _unitOfWork.CommitAsync();
+            }
+            catch
+            {
+                await _unitOfWork.RollbackAsync();
+                throw;
+            }
+
             var user = new AppUser
             {
                 UserName = model.Email,
