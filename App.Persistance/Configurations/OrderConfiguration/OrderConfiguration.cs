@@ -10,6 +10,8 @@ namespace App.Persistance.Configurations.OrderConfiguration
         {
             builder.HasKey(o => o.Id);
 
+            builder.ToTable("Orders");
+
             builder.HasOne(o => o.AppUser)
                    .WithMany(u => u.Orders)
                    .HasForeignKey(o => o.UserId)

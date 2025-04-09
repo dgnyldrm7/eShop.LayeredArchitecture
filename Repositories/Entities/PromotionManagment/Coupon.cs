@@ -13,6 +13,7 @@ namespace App.Core.Entities.PromotionManagment
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int SellerId { get; set; } = default!;
-        public Seller Seller { get; set; }
+        public Seller Seller { get; set; } = null!;
+        public List<UserCoupon>? UserCoupons { get; set; }
     }
 }

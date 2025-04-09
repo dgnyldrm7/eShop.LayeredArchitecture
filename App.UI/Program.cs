@@ -21,6 +21,10 @@ builder.AddPersistanceDIContainer();
 
 builder.AddServiceDIContainer();
 
+builder.Logging.ClearProviders(); // önce tüm loggerlarý sil
+builder.Logging.AddConsole(); // sonra sadece ihtiyacýn olanlarý ekle (mesela Console)
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

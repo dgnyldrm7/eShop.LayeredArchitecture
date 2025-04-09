@@ -10,6 +10,8 @@ namespace App.Persistance.Configurations.OrderConfiguration
         {
             builder.HasKey(p => p.Id);
 
+            builder.ToTable("Payments");
+
             builder.HasOne(p => p.Transaction)
                    .WithOne(t => t.Payment)
                    .HasForeignKey<Payment>(p => p.TransactionId)

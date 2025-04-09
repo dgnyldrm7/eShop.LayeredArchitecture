@@ -1,5 +1,6 @@
 ﻿using App.Core.Entities.OrderManagment;
 using App.Core.Entities.ProductManagment;
+using App.Core.Entities.PromotionManagment;
 using Microsoft.AspNetCore.Identity;
 
 namespace App.Core.Entities.UserManagment
@@ -15,5 +16,6 @@ namespace App.Core.Entities.UserManagment
         public List<Cart>? Carts { get; set; }
         public List<Comment>? Comments { get; set; }
         public List<Favorite>? Favorites { get; set; }
+        public List<UserCoupon>? UserCoupons { get; set;}
     }
 }
