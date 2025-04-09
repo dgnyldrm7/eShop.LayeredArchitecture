@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250407152722_addFavoriteShipping")]
-    partial class addFavoriteShipping
+    [Migration("20250409171020_FirstMigration")]
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,13 +62,13 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("orders");
+                    b.ToTable("Orders", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            OrderDate = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(8457),
+                            OrderDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(728),
                             PaymentId = 1,
                             ShippingId = 1,
                             Status = 1,
@@ -103,7 +103,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("orderItems");
+                    b.ToTable("OrderItems", (string)null);
 
                     b.HasData(
                         new
@@ -144,14 +144,14 @@ namespace App.Persistance.Migrations
                     b.HasIndex("TransactionId")
                         .IsUnique();
 
-                    b.ToTable("payments");
+                    b.ToTable("Payments", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             OrderId = 1,
-                            PaymentDate = new DateTime(2025, 4, 7, 18, 27, 21, 699, DateTimeKind.Local).AddTicks(8664),
+                            PaymentDate = new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(927),
                             PaymentMethod = 0,
                             Status = 5,
                             TransactionId = 1
@@ -201,7 +201,7 @@ namespace App.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("shippings");
+                    b.ToTable("Shippings", (string)null);
 
                     b.HasData(
                         new
@@ -210,9 +210,9 @@ namespace App.Persistance.Migrations
                             Address = "123 Main St, Springfield, IL",
                             City = "Springfield",
                             CompanyName = "MNG CARGO",
-                            DeliveryDate = new DateTime(2025, 4, 12, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(8850),
+                            DeliveryDate = new DateTime(2025, 4, 14, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1139),
                             OrderId = 1,
-                            ShippingDate = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(8850),
+                            ShippingDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1138),
                             State = "IL",
                             TrackingNumber = "TRACK123456",
                             ZipCode = "62701"
@@ -241,7 +241,7 @@ namespace App.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("transactions");
+                    b.ToTable("Transactions", (string)null);
 
                     b.HasData(
                         new
@@ -250,7 +250,7 @@ namespace App.Persistance.Migrations
                             Amount = 150.00m,
                             PaymentId = 1,
                             Status = 1,
-                            TransactionDate = new DateTime(2025, 4, 7, 18, 27, 21, 699, DateTimeKind.Local).AddTicks(9052)
+                            TransactionDate = new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(1341)
                         });
                 });
 
@@ -282,13 +282,13 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("answers");
+                    b.ToTable("Answers", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(9236),
+                            CreatedAt = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1611),
                             Message = "Evet, bu ürün yeşil renklidir efendim !!",
                             QuestionId = 1,
                             SellerId = 1
@@ -311,7 +311,7 @@ namespace App.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -350,13 +350,13 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("comments");
+                    b.ToTable("Comments", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 7, 15, 27, 21, 699, DateTimeKind.Utc).AddTicks(9578),
+                            CreatedAt = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(2317),
                             Message = "Bu ürün çok güzel, tavsiye ederim.",
                             ProductId = 1,
                             UserId = "1"
@@ -420,7 +420,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new
@@ -460,7 +460,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("productPhotos");
+                    b.ToTable("ProductPhotos", (string)null);
 
                     b.HasData(
                         new
@@ -502,7 +502,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("questions");
+                    b.ToTable("Questions", (string)null);
 
                     b.HasData(
                         new
@@ -540,7 +540,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ratings");
+                    b.ToTable("Ratings", (string)null);
 
                     b.HasData(
                         new
@@ -589,7 +589,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("coupons");
+                    b.ToTable("Coupons", (string)null);
 
                     b.HasData(
                         new
@@ -597,12 +597,59 @@ namespace App.Persistance.Migrations
                             Id = 1,
                             Code = "COUPON100",
                             DiscountAmount = 100m,
-                            EndDate = new DateTime(2025, 5, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(700),
+                            EndDate = new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3223),
                             IsActive = true,
                             SellerId = 1,
-                            StartDate = new DateTime(2025, 4, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(699),
+                            StartDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3222),
                             UsageLimit = 10,
                             UsedCount = 0
+                        });
+                });
+
+            modelBuilder.Entity("App.Core.Entities.PromotionManagment.UserCoupon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AssignedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CouponId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UsedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CouponId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserCoupons", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AssignedDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3451),
+                            CouponId = 1,
+                            ExpirationDate = new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3452),
+                            IsUsed = false,
+                            UsedDate = new DateTime(2025, 4, 19, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3455),
+                            UserId = "1"
                         });
                 });
 
@@ -614,18 +661,38 @@ namespace App.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("moderators");
+                    b.ToTable("Moderators", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Name = "Hasan"
+                            Email = "hasanali@gmail.com",
+                            Name = "Hasan",
+                            Password = "password123",
+                            PhoneNumber = "1234567890",
+                            Surname = "Ali",
+                            UserName = "hasan"
                         });
                 });
 
@@ -675,7 +742,7 @@ namespace App.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("sellers");
+                    b.ToTable("Sellers", (string)null);
 
                     b.HasData(
                         new
@@ -736,7 +803,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("addresses");
+                    b.ToTable("Addresses", (string)null);
 
                     b.HasData(
                         new
@@ -872,8 +939,8 @@ namespace App.Persistance.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e15a6208-39b7-428c-9903-b49dea05d33c",
-                            CreatedDate = new DateTime(2025, 4, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(2234),
+                            ConcurrencyStamp = "b692f577-11b9-4406-beca-7e226edc1402",
+                            CreatedDate = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5267),
                             Email = "test@example.com",
                             EmailConfirmed = true,
                             IsActive = true,
@@ -883,7 +950,7 @@ namespace App.Persistance.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEC4tNDZ4Q3kuvHQGgXV6mkzUayYGuXl0f3kRU6dPFE0Uj6gYX4ZmuCN6PMIqP6ZxDQ==",
                             PhoneNumber = "+905551112233",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "7d228117-7a91-4690-b102-7c3a2b6e023e",
+                            SecurityStamp = "41dba2a0-19e2-4b25-92f5-a2123e7e0363",
                             TwoFactorEnabled = false,
                             UserName = "testuser"
                         });
@@ -905,7 +972,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("carts");
+                    b.ToTable("Carts", (string)null);
 
                     b.HasData(
                         new
@@ -938,7 +1005,7 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("cartItems");
+                    b.ToTable("CartItems", (string)null);
 
                     b.HasData(
                         new
@@ -973,13 +1040,13 @@ namespace App.Persistance.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Favorite");
+                    b.ToTable("Favorites", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 4, 7, 15, 27, 21, 700, DateTimeKind.Utc).AddTicks(2774),
+                            CreatedAt = new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5842),
                             ProductId = 1,
                             UserId = "1"
                         });
@@ -1265,6 +1332,24 @@ namespace App.Persistance.Migrations
                     b.Navigation("Seller");
                 });
 
+            modelBuilder.Entity("App.Core.Entities.PromotionManagment.UserCoupon", b =>
+                {
+                    b.HasOne("App.Core.Entities.PromotionManagment.Coupon", "Coupon")
+                        .WithMany("UserCoupons")
+                        .HasForeignKey("CouponId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("App.Core.Entities.UserManagment.AppUser", "AppUser")
+                        .WithMany("UserCoupons")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Coupon");
+                });
+
             modelBuilder.Entity("App.Core.Entities.UserManagment.Address", b =>
                 {
                     b.HasOne("App.Core.Entities.UserManagment.AppUser", "AppUser")
@@ -1425,6 +1510,11 @@ namespace App.Persistance.Migrations
                     b.Navigation("Answer");
                 });
 
+            modelBuilder.Entity("App.Core.Entities.PromotionManagment.Coupon", b =>
+                {
+                    b.Navigation("UserCoupons");
+                });
+
             modelBuilder.Entity("App.Core.Entities.SellerManagment.Seller", b =>
                 {
                     b.Navigation("Answers");
@@ -1449,6 +1539,8 @@ namespace App.Persistance.Migrations
                     b.Navigation("Questions");
 
                     b.Navigation("Ratings");
+
+                    b.Navigation("UserCoupons");
                 });
 
             modelBuilder.Entity("App.Core.Entities.UserManagment.Cart", b =>

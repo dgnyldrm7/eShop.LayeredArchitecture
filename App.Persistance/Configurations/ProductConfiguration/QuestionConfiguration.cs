@@ -10,6 +10,8 @@ namespace App.Persistance.Configurations.ProductConfiguration
         {
             builder.HasKey(s => s.Id);
 
+            builder.ToTable("Questions");
+
             builder.HasOne(s => s.Answer)
                 .WithOne(s => s.Question)
                 .HasForeignKey<Answer>(s => s.QuestionId)

@@ -9,6 +9,8 @@ namespace App.Persistance.Configurations.ProductConfiguration
         public void Configure(EntityTypeBuilder<ProductPhoto> builder)
         {
             builder.HasKey(s => s.Id);
+
+            builder.ToTable("ProductPhotos");
         }
     }
 }

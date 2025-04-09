@@ -10,6 +10,8 @@ namespace App.Persistance.Configurations.UserConfiguration
         {
             builder.HasKey(a => a.Id);
 
+            builder.ToTable("Addresses");
+
             builder.HasOne(a => a.AppUser)
                    .WithMany(u => u.Addresses)
                    .HasForeignKey(a => a.UserId)

@@ -9,6 +9,8 @@ namespace App.Persistance.Configurations.ProductConfiguration
         public void Configure(EntityTypeBuilder<Rating> builder)
         {
             builder.HasKey(s => s.Id);
+
+            builder.ToTable("Ratings");
         }
     }
 }

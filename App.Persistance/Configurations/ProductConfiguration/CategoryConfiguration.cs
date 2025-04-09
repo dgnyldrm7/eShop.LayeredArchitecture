@@ -9,6 +9,8 @@ namespace App.Persistance.Configurations.ProductConfiguration.ProductConfigurati
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(s => s.Id);
+
+            builder.ToTable("Categories");
         }
     }
 }

@@ -10,6 +10,8 @@ namespace App.Persistance.Configurations.UserConfiguration
         {
             builder.HasKey(ci => ci.Id);
 
+            builder.ToTable("CartItems");
+
             builder.HasOne(ci => ci.Cart)
                    .WithMany(c => c.CartItems)
                    .HasForeignKey(ci => ci.CartId)

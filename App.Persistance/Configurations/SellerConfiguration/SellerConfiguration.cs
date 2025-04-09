@@ -9,6 +9,8 @@ namespace App.Persistance.Configurations.SellerConfiguration
         public void Configure(EntityTypeBuilder<Seller> builder)
         {
             builder.HasKey(s => s.Id);
+
+            builder.ToTable("Sellers");
         }
     }
 }

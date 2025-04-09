@@ -56,7 +56,7 @@ namespace App.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "categories",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -66,24 +66,29 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_categories", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "moderators",
+                name: "Moderators",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_moderators", x => x.Id);
+                    table.PrimaryKey("PK_Moderators", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "sellers",
+                name: "Sellers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -100,11 +105,11 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_sellers", x => x.Id);
+                    table.PrimaryKey("PK_Sellers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "shippings",
+                name: "Shippings",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -121,11 +126,11 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_shippings", x => x.Id);
+                    table.PrimaryKey("PK_Shippings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "transactions",
+                name: "Transactions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -137,7 +142,7 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_transactions", x => x.Id);
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,7 +167,7 @@ namespace App.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "addresses",
+                name: "Addresses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -178,9 +183,9 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_addresses", x => x.Id);
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_addresses_AspNetUsers_UserId",
+                        name: "FK_Addresses_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -273,7 +278,7 @@ namespace App.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "carts",
+                name: "Carts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -282,9 +287,9 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_carts", x => x.Id);
+                    table.PrimaryKey("PK_Carts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_carts_AspNetUsers_UserId",
+                        name: "FK_Carts_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -292,7 +297,7 @@ namespace App.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "coupons",
+                name: "Coupons",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -308,52 +313,53 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_coupons", x => x.Id);
+                    table.PrimaryKey("PK_Coupons", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_coupons_sellers_SellerId",
+                        name: "FK_Coupons_Sellers_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "sellers",
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "products",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Slug = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsShippingFree = table.Column<bool>(type: "bit", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     BranName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FirstPhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RegularPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DiscountPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    SellerId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    SellerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_products", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_products_categories_CategoryId",
+                        name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "categories",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_products_sellers_SellerId",
+                        name: "FK_Products_Sellers_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "sellers",
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "payments",
+                name: "Payments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -366,17 +372,47 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_payments", x => x.Id);
+                    table.PrimaryKey("PK_Payments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_payments_transactions_TransactionId",
+                        name: "FK_Payments_Transactions_TransactionId",
                         column: x => x.TransactionId,
-                        principalTable: "transactions",
+                        principalTable: "Transactions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "cartItems",
+                name: "UserCoupons",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CouponId = table.Column<int>(type: "int", nullable: false),
+                    IsUsed = table.Column<bool>(type: "bit", nullable: false),
+                    AssignedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UsedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserCoupons", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserCoupons_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserCoupons_Coupons_CouponId",
+                        column: x => x.CouponId,
+                        principalTable: "Coupons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -387,23 +423,23 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_cartItems", x => x.Id);
+                    table.PrimaryKey("PK_CartItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_cartItems_carts_CartId",
+                        name: "FK_CartItems_Carts_CartId",
                         column: x => x.CartId,
-                        principalTable: "carts",
+                        principalTable: "Carts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_cartItems_products_ProductId",
+                        name: "FK_CartItems_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "products",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "comments",
+                name: "Comments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -415,23 +451,50 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_comments", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_comments_AspNetUsers_UserId",
+                        name: "FK_Comments_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_comments_products_ProductId",
+                        name: "FK_Comments_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "products",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "productPhotos",
+                name: "Favorites",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Favorites", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Favorites_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Favorites_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductPhotos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -441,17 +504,17 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_productPhotos", x => x.Id);
+                    table.PrimaryKey("PK_ProductPhotos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_productPhotos_products_ProductId",
+                        name: "FK_ProductPhotos_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "products",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "questions",
+                name: "Questions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -464,23 +527,23 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_questions", x => x.Id);
+                    table.PrimaryKey("PK_Questions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_questions_AspNetUsers_UserId",
+                        name: "FK_Questions_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_questions_products_ProductId",
+                        name: "FK_Questions_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "products",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ratings",
+                name: "Ratings",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -491,23 +554,23 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ratings", x => x.Id);
+                    table.PrimaryKey("PK_Ratings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ratings_AspNetUsers_UserId",
+                        name: "FK_Ratings_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ratings_products_ProductId",
+                        name: "FK_Ratings_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "products",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "orders",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -521,29 +584,29 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_orders", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_orders_AspNetUsers_UserId",
+                        name: "FK_Orders_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_orders_payments_PaymentId",
+                        name: "FK_Orders_Payments_PaymentId",
                         column: x => x.PaymentId,
-                        principalTable: "payments",
+                        principalTable: "Payments",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_orders_shippings_ShippingId",
+                        name: "FK_Orders_Shippings_ShippingId",
                         column: x => x.ShippingId,
-                        principalTable: "shippings",
+                        principalTable: "Shippings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "answers",
+                name: "Answers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -555,23 +618,23 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_answers", x => x.Id);
+                    table.PrimaryKey("PK_Answers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_answers_questions_QuestionId",
+                        name: "FK_Answers_Questions_QuestionId",
                         column: x => x.QuestionId,
-                        principalTable: "questions",
+                        principalTable: "Questions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_answers_sellers_SellerId",
+                        name: "FK_Answers_Sellers_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "sellers",
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "orderItems",
+                name: "OrderItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -583,17 +646,17 @@ namespace App.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_orderItems", x => x.Id);
+                    table.PrimaryKey("PK_OrderItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_orderItems_orders_OrderId",
+                        name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "orders",
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_orderItems_products_ProductId",
+                        name: "FK_OrderItems_Products_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "products",
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -610,107 +673,122 @@ namespace App.Persistance.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedDate", "Email", "EmailConfirmed", "IsActive", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "3ed6510a-d37b-413c-a717-452fd0a4084c", new DateTime(2025, 4, 7, 14, 23, 10, 577, DateTimeKind.Utc).AddTicks(719), "test@example.com", true, true, false, null, "TEST@EXAMPLE.COM", "TESTUSER", "AQAAAAEAACcQAAAAEC4tNDZ4Q3kuvHQGgXV6mkzUayYGuXl0f3kRU6dPFE0Uj6gYX4ZmuCN6PMIqP6ZxDQ==", "+905551112233", true, "9e94feed-0dfd-489a-893e-53cf847cceab", false, "testuser" });
+                values: new object[] { "1", 0, "b692f577-11b9-4406-beca-7e226edc1402", new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5267), "test@example.com", true, true, false, null, "TEST@EXAMPLE.COM", "TESTUSER", "AQAAAAEAACcQAAAAEC4tNDZ4Q3kuvHQGgXV6mkzUayYGuXl0f3kRU6dPFE0Uj6gYX4ZmuCN6PMIqP6ZxDQ==", "+905551112233", true, "41dba2a0-19e2-4b25-92f5-a2123e7e0363", false, "testuser" });
 
             migrationBuilder.InsertData(
-                table: "categories",
+                table: "Categories",
                 columns: new[] { "Id", "Name", "Slug" },
                 values: new object[] { 1, "Tekstil", "tekstil" });
 
             migrationBuilder.InsertData(
-                table: "sellers",
+                table: "Moderators",
+                columns: new[] { "Id", "Email", "Name", "Password", "PhoneNumber", "Surname", "UserName" },
+                values: new object[] { 1, "hasanali@gmail.com", "Hasan", "password123", "1234567890", "Ali", "hasan" });
+
+            migrationBuilder.InsertData(
+                table: "Sellers",
                 columns: new[] { "Id", "Address", "BannerUrl", "Email", "FirstName", "LastName", "LogoUrl", "Password", "Phone", "UserName" },
                 values: new object[] { 1, "123 Main St, City, Country", "https://example.com/banner.jpg", "test@gmail.com", "John", "Doe", "https://example.com/logo.jpg", "password123", "1234567890", "johndoe" });
 
             migrationBuilder.InsertData(
-                table: "shippings",
+                table: "Shippings",
                 columns: new[] { "Id", "Address", "City", "CompanyName", "DeliveryDate", "OrderId", "ShippingDate", "State", "TrackingNumber", "ZipCode" },
-                values: new object[] { 1, "123 Main St, Springfield, IL", "Springfield", "MNG CARGO", new DateTime(2025, 4, 12, 14, 23, 10, 576, DateTimeKind.Utc).AddTicks(5545), 1, new DateTime(2025, 4, 7, 14, 23, 10, 576, DateTimeKind.Utc).AddTicks(5545), "IL", "TRACK123456", "62701" });
+                values: new object[] { 1, "123 Main St, Springfield, IL", "Springfield", "MNG CARGO", new DateTime(2025, 4, 14, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1139), 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1138), "IL", "TRACK123456", "62701" });
 
             migrationBuilder.InsertData(
-                table: "transactions",
+                table: "Transactions",
                 columns: new[] { "Id", "Amount", "PaymentId", "Status", "TransactionDate" },
-                values: new object[] { 1, 150.00m, 1, 1, new DateTime(2025, 4, 7, 17, 23, 10, 576, DateTimeKind.Local).AddTicks(5881) });
+                values: new object[] { 1, 150.00m, 1, 1, new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(1341) });
 
             migrationBuilder.InsertData(
-                table: "addresses",
+                table: "Addresses",
                 columns: new[] { "Id", "City", "District", "IsDefault", "PhoneNumber", "ReceiverName", "Street", "UserId", "ZipCode" },
                 values: new object[] { 1, "New York", "Manhattan", true, "123-456-7890", "John Doe", "5th Avenue", "1", "10001" });
 
             migrationBuilder.InsertData(
-                table: "carts",
+                table: "Carts",
                 columns: new[] { "Id", "UserId" },
                 values: new object[] { 1, "1" });
 
             migrationBuilder.InsertData(
-                table: "coupons",
+                table: "Coupons",
                 columns: new[] { "Id", "Code", "DiscountAmount", "EndDate", "IsActive", "SellerId", "StartDate", "UsageLimit", "UsedCount" },
-                values: new object[] { 1, "COUPON100", 100m, new DateTime(2025, 5, 7, 14, 23, 10, 576, DateTimeKind.Utc).AddTicks(8229), true, 1, new DateTime(2025, 4, 7, 14, 23, 10, 576, DateTimeKind.Utc).AddTicks(8228), 10, 0 });
+                values: new object[] { 1, "COUPON100", 100m, new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3223), true, 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3222), 10, 0 });
 
             migrationBuilder.InsertData(
-                table: "payments",
+                table: "Payments",
                 columns: new[] { "Id", "OrderId", "PaymentDate", "PaymentMethod", "Status", "TransactionId" },
-                values: new object[] { 1, 1, new DateTime(2025, 4, 7, 17, 23, 10, 576, DateTimeKind.Local).AddTicks(5236), 0, 5, 1 });
+                values: new object[] { 1, 1, new DateTime(2025, 4, 9, 20, 10, 19, 598, DateTimeKind.Local).AddTicks(927), 0, 5, 1 });
 
             migrationBuilder.InsertData(
-                table: "products",
-                columns: new[] { "Id", "BranName", "CategoryId", "Description", "DiscountPrice", "FirstPhotoUrl", "IsActive", "Name", "RegularPrice", "SellerId", "Slug", "Stock" },
-                values: new object[] { 1, "Brand A", 1, "Description for Product 1", 19.99m, "https://example.com/product1.jpg", true, "Product 1", 29.99m, 1, "product-1", 100 });
+                table: "Products",
+                columns: new[] { "Id", "BranName", "CategoryId", "Description", "DiscountPrice", "FirstPhotoUrl", "IsActive", "IsShippingFree", "Name", "RegularPrice", "SellerId", "Slug", "Stock" },
+                values: new object[] { 1, "Brand A", 1, "Description for Product 1", 19.99m, "https://example.com/product1.jpg", true, false, "Product 1", 29.99m, 1, "product-1", 100 });
 
             migrationBuilder.InsertData(
-                table: "cartItems",
+                table: "CartItems",
                 columns: new[] { "Id", "CartId", "ProductId", "Quantity" },
                 values: new object[] { 1, 1, 1, 2 });
 
             migrationBuilder.InsertData(
-                table: "comments",
+                table: "Comments",
                 columns: new[] { "Id", "CreatedAt", "Message", "ProductId", "UserId" },
-                values: new object[] { 1, new DateTime(2025, 4, 7, 14, 23, 10, 576, DateTimeKind.Utc).AddTicks(6815), "Bu ürün çok güzel, tavsiye ederim.", 1, "1" });
+                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(2317), "Bu ürün çok güzel, tavsiye ederim.", 1, "1" });
 
             migrationBuilder.InsertData(
-                table: "orders",
+                table: "Favorites",
+                columns: new[] { "Id", "CreatedAt", "ProductId", "UserId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(5842), 1, "1" });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
                 columns: new[] { "Id", "OrderDate", "PaymentId", "ShippingId", "Status", "TotalAmount", "UserId" },
-                values: new object[] { 1, new DateTime(2025, 4, 7, 14, 23, 10, 576, DateTimeKind.Utc).AddTicks(4917), 1, 1, 1, 100.00m, "1" });
+                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(728), 1, 1, 1, 100.00m, "1" });
 
             migrationBuilder.InsertData(
-                table: "productPhotos",
+                table: "ProductPhotos",
                 columns: new[] { "Id", "ProductId", "Url" },
                 values: new object[] { 1, 1, "https://example.com/photo1.jpg" });
 
             migrationBuilder.InsertData(
-                table: "questions",
+                table: "Questions",
                 columns: new[] { "Id", "AnswerId", "IsAnswered", "Message", "ProductId", "UserId" },
                 values: new object[] { 1, 1, true, "Bu ürün orijinal mi?", 1, "1" });
 
             migrationBuilder.InsertData(
-                table: "ratings",
+                table: "Ratings",
                 columns: new[] { "Id", "ProductId", "Score", "UserId" },
                 values: new object[] { 1, 1, 5, "1" });
 
             migrationBuilder.InsertData(
-                table: "answers",
-                columns: new[] { "Id", "CreatedAt", "Message", "QuestionId", "SellerId" },
-                values: new object[] { 1, new DateTime(2025, 4, 7, 14, 23, 10, 576, DateTimeKind.Utc).AddTicks(6239), "Evet, bu ürün yeşil renklidir efendim !!", 1, 1 });
+                table: "UserCoupons",
+                columns: new[] { "Id", "AssignedDate", "CouponId", "ExpirationDate", "IsUsed", "UsedDate", "UserId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3451), 1, new DateTime(2025, 5, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3452), false, new DateTime(2025, 4, 19, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(3455), "1" });
 
             migrationBuilder.InsertData(
-                table: "orderItems",
+                table: "Answers",
+                columns: new[] { "Id", "CreatedAt", "Message", "QuestionId", "SellerId" },
+                values: new object[] { 1, new DateTime(2025, 4, 9, 17, 10, 19, 598, DateTimeKind.Utc).AddTicks(1611), "Evet, bu ürün yeşil renklidir efendim !!", 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "OrderItems",
                 columns: new[] { "Id", "OrderId", "ProductId", "ProductPrice", "Quantity" },
                 values: new object[] { 1, 1, 1, 50.00m, 2 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_addresses_UserId",
-                table: "addresses",
+                name: "IX_Addresses_UserId",
+                table: "Addresses",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_answers_QuestionId",
-                table: "answers",
+                name: "IX_Answers_QuestionId",
+                table: "Answers",
                 column: "QuestionId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_answers_SellerId",
-                table: "answers",
+                name: "IX_Answers_SellerId",
+                table: "Answers",
                 column: "SellerId");
 
             migrationBuilder.CreateIndex(
@@ -753,101 +831,121 @@ namespace App.Persistance.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_cartItems_CartId",
-                table: "cartItems",
+                name: "IX_CartItems_CartId",
+                table: "CartItems",
                 column: "CartId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_cartItems_ProductId",
-                table: "cartItems",
+                name: "IX_CartItems_ProductId",
+                table: "CartItems",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_carts_UserId",
-                table: "carts",
+                name: "IX_Carts_UserId",
+                table: "Carts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_comments_ProductId",
-                table: "comments",
+                name: "IX_Comments_ProductId",
+                table: "Comments",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_comments_UserId",
-                table: "comments",
+                name: "IX_Comments_UserId",
+                table: "Comments",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_coupons_SellerId",
-                table: "coupons",
+                name: "IX_Coupons_SellerId",
+                table: "Coupons",
                 column: "SellerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_orderItems_OrderId",
-                table: "orderItems",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_orderItems_ProductId",
-                table: "orderItems",
+                name: "IX_Favorites_ProductId",
+                table: "Favorites",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_orders_PaymentId",
-                table: "orders",
+                name: "IX_Favorites_UserId",
+                table: "Favorites",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
+                table: "OrderItems",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ProductId",
+                table: "OrderItems",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_PaymentId",
+                table: "Orders",
                 column: "PaymentId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_orders_ShippingId",
-                table: "orders",
+                name: "IX_Orders_ShippingId",
+                table: "Orders",
                 column: "ShippingId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_orders_UserId",
-                table: "orders",
+                name: "IX_Orders_UserId",
+                table: "Orders",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_payments_TransactionId",
-                table: "payments",
+                name: "IX_Payments_TransactionId",
+                table: "Payments",
                 column: "TransactionId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_productPhotos_ProductId",
-                table: "productPhotos",
+                name: "IX_ProductPhotos_ProductId",
+                table: "ProductPhotos",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_CategoryId",
-                table: "products",
+                name: "IX_Products_CategoryId",
+                table: "Products",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_SellerId",
-                table: "products",
+                name: "IX_Products_SellerId",
+                table: "Products",
                 column: "SellerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_questions_ProductId",
-                table: "questions",
+                name: "IX_Questions_ProductId",
+                table: "Questions",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_questions_UserId",
-                table: "questions",
+                name: "IX_Questions_UserId",
+                table: "Questions",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ratings_ProductId",
-                table: "ratings",
+                name: "IX_Ratings_ProductId",
+                table: "Ratings",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ratings_UserId",
-                table: "ratings",
+                name: "IX_Ratings_UserId",
+                table: "Ratings",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserCoupons_CouponId",
+                table: "UserCoupons",
+                column: "CouponId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserCoupons_UserId",
+                table: "UserCoupons",
                 column: "UserId");
         }
 
@@ -855,10 +953,10 @@ namespace App.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "addresses");
+                name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "answers");
+                name: "Answers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -876,58 +974,64 @@ namespace App.Persistance.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "cartItems");
+                name: "CartItems");
 
             migrationBuilder.DropTable(
-                name: "comments");
+                name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "coupons");
+                name: "Favorites");
 
             migrationBuilder.DropTable(
-                name: "moderators");
+                name: "Moderators");
 
             migrationBuilder.DropTable(
-                name: "orderItems");
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
-                name: "productPhotos");
+                name: "ProductPhotos");
 
             migrationBuilder.DropTable(
-                name: "ratings");
+                name: "Ratings");
 
             migrationBuilder.DropTable(
-                name: "questions");
+                name: "UserCoupons");
+
+            migrationBuilder.DropTable(
+                name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "carts");
+                name: "Carts");
 
             migrationBuilder.DropTable(
-                name: "orders");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "products");
+                name: "Coupons");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "payments");
+                name: "Payments");
 
             migrationBuilder.DropTable(
-                name: "shippings");
+                name: "Shippings");
 
             migrationBuilder.DropTable(
-                name: "categories");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "sellers");
+                name: "Sellers");
 
             migrationBuilder.DropTable(
-                name: "transactions");
+                name: "Transactions");
         }
     }
 }

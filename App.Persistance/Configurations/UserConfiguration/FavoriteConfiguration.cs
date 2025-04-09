@@ -10,6 +10,8 @@ namespace App.Persistance.Configurations.UserConfiguration
         {
             builder.HasKey(x => x.Id);
 
+            builder.ToTable("Favorites");
+
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Favorites)
                 .HasForeignKey(x => x.UserId)

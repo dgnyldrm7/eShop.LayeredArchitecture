@@ -9,6 +9,8 @@ namespace App.Persistance.Configurations.OrderConfiguration
         public void Configure(EntityTypeBuilder<Shipping> builder)
         {
             builder.HasKey(s => s.Id);
+
+            builder.ToTable("Shippings");
         }
     }
 }

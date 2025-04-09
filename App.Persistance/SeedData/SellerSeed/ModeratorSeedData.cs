@@ -12,7 +12,12 @@ namespace App.Persistance.SeedData.SellerSeed
             new Moderator
             {
                 Id = 1,
-                Name = "Hasan"
+                UserName = "hasan",
+                Name = "Hasan",
+                Surname = "Ali",
+                Password = "password123",
+                Email = "hasanali@gmail.com",
+                PhoneNumber = "1234567890",
             }
             );
         }

@@ -9,6 +9,8 @@ namespace App.Persistance.Configurations.ProductConfiguration.ProductConfigurati
         public void Configure(EntityTypeBuilder<Answer> builder)
         {
             builder.HasKey(s => s.Id);
+
+            builder.ToTable("Answers");
         }
     }
 }

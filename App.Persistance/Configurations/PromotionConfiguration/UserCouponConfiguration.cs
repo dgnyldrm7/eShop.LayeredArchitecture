@@ -8,9 +8,9 @@ namespace App.Persistance.Configurations.PromotionConfiguration
     {
         public void Configure(EntityTypeBuilder<UserCoupon> builder)
         {
-            builder.ToTable("UserCoupons");
-
             builder.HasKey(uc => uc.Id);
+
+            builder.ToTable("UserCoupons");
 
             builder.HasOne(uc => uc.AppUser)
                    .WithMany(u => u.UserCoupons)

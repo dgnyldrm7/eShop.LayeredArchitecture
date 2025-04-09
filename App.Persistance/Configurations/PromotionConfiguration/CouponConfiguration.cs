@@ -10,6 +10,8 @@ namespace App.Persistance.Configurations.PromotionConfiguration
         {
             builder.HasKey(c => c.Id);
 
+            builder.ToTable("Coupons");
+
             builder.HasOne(c => c.Seller)
                    .WithMany(s => s.Coupons)
                    .HasForeignKey(c => c.SellerId)

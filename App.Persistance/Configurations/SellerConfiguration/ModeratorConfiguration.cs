@@ -9,6 +9,8 @@ namespace App.Persistance.Configurations.SellerConfiguration
         public void Configure(EntityTypeBuilder<Moderator> builder)
         {
             builder.HasKey(m => m.Id);
+
+            builder.ToTable("Moderators");
         }
     }
 }
