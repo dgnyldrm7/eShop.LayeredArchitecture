@@ -1,4 +1,5 @@
-﻿using App.Core.DTOs;
+﻿using System.Threading;
+using App.Core.DTOs;
 using App.Core.Entities.UserManagment;
 using App.Core.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
@@ -20,19 +21,19 @@ namespace App.Services.Implementations.UserService
 
         public async Task<IdentityResult> RegisterUserAsync(RegisterDto model)
         {
-            await _unitOfWork.BeginTransactionAsync();
+            await _unitOfWork.BeginTransactionAsync(CancellationToken.None);
 
             try
             {
                 //Process
 
-                await _unitOfWork.SaveChangesAsync();
+                await _unitOfWork.SaveChangesAsync(CancellationToken.None);
 
-                await _unitOfWork.CommitAsync();
+                await _unitOfWork.CommitAsync(CancellationToken.None);
             }
             catch
             {
-                await _unitOfWork.RollbackAsync();
+                await _unitOfWork.RollbackAsync(CancellationToken.None);
                 throw;
             }
 

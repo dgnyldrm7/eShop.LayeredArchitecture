@@ -19,6 +19,7 @@ namespace App.UI.Pages
         {
             var products = await _productService.GetAllProductsAsync();
 
+
             Products = products.ToList();
         }
     }
