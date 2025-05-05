@@ -1,7 +1,6 @@
 ﻿using App.Core.Interfaces.UnitOfWork;
 using App.Persistance.UnitOfWork;
-using App.Services.Implementations.ProductService;
-using App.Services.Implementations.UserService;
+using App.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

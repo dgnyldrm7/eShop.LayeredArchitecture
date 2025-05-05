@@ -1,17 +1,15 @@
-﻿using System.Threading;
-using App.Core.DTOs;
+﻿using App.Core.DTOs;
 using App.Core.Entities.UserManagment;
 using App.Core.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 
-namespace App.Services.Implementations.UserService
+namespace App.Services.Services
 {
     public class UserRegistrationService
     {
         private readonly UserManager<AppUser> _userManager;
 
         private readonly IUnitOfWork _unitOfWork;
-        //private readonly IEmailSender _emailSender;
 
         public UserRegistrationService(UserManager<AppUser> userManager, IUnitOfWork unitOfWork)
         {

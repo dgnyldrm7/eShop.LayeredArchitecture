@@ -3,7 +3,7 @@ using App.Core.Interfaces;
 using App.Core.Interfaces.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
-namespace App.Services.Implementations.ProductService
+namespace App.Services.Services
 {
     public class ProductService
     {
@@ -11,36 +11,18 @@ namespace App.Services.Implementations.ProductService
 
         private readonly IGenericRepository<Product> _productRepository;
 
-        private readonly ICacheService _cacheService;
-
         private readonly IUnitOfWork unitOfWork;
 
-        public ProductService(IGenericRepository<Product> productRepository, ICacheService cacheService, ILogger<ProductService> logger, IUnitOfWork unitOfWork)
+        public ProductService(IGenericRepository<Product> productRepository, ILogger<ProductService> logger, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
-            _cacheService = cacheService;
             _logger = logger;
             this.unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            string cacheKey = "products";
-
-            List<Product>? cached = _cacheService.Get<List<Product>>(cacheKey);
-
-            if (cached != null)
-            {
-                _logger.LogInformation("Products are already in cache.");
-
-                return cached;
-            }
-
             var products = await _productRepository.GetAllAsync();
-
-            _cacheService.Set(cacheKey, products.ToList(), TimeSpan.FromMinutes(5));
-
-            _logger.LogInformation("Products are fetched from database and cached.");
 
             return products;
         }
