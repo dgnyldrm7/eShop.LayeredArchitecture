@@ -3,7 +3,7 @@ using App.Core.Entities.UserManagment;
 using App.Core.Interfaces.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 
-namespace App.Services.Services
+namespace App.Services.Services.User
 {
     public class UserRegistrationService
     {
