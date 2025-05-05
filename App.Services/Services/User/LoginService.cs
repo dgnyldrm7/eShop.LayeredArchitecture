@@ -6,9 +6,13 @@ namespace App.Services.Services.User
     public class LoginService
     {
         private readonly UserManager<AppUser> _userManager;
-        public LoginService(UserManager<AppUser> userManager)
+        private readonly SignInManager<AppUser> _signInManager;
+
+
+        public LoginService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public async Task Login(string userEmail, string userPassword)
@@ -21,10 +25,12 @@ namespace App.Services.Services.User
 
                 if (result)
                 {
-                    // User is authenticated
-                    // Perform login logic here
+                    //Çerez tabanlı giriş yaptırıyoruz.
+                    await _signInManager.SignInAsync(user, isPersistent: true);
 
-                    // For example, you might want to sign in the user using a cookie or JWT token
+
+
+
                 }
                 else
                 {
