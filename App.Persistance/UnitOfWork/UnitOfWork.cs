@@ -14,28 +14,27 @@ namespace App.Persistance.UnitOfWork
 
         public void Dispose()
         {
-            // _context.Dispose(); ❌ YAPMA
+            // _context.Dispose();
         }
 
-        public async Task BeginTransactionAsync()
+        public async Task BeginTransactionAsync(CancellationToken cancellationToken)
         {
             await _context.Database.BeginTransactionAsync();
         }
 
-        public async Task CommitAsync()
+        public async Task CommitAsync(CancellationToken cancellationToken)
         {
             await _context.Database.CommitTransactionAsync();
         }
 
-        public Task RollbackAsync()
+        public Task RollbackAsync(CancellationToken cancellationToken)
         {
             return _context.Database.RollbackTransactionAsync();
         }
 
-        public Task<int> SaveChangesAsync()
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
             return _context.SaveChangesAsync();
         }
-
     }
 }

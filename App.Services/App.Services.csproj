@@ -7,19 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Persistance\App.Persistance.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="BackgroundJobs\" />
-    <Folder Include="Implementations\SellerService\" />
-    <Folder Include="Implementations\PromotionService\" />
-    <Folder Include="Implementations\OrderService\" />
-    <Folder Include="Validators\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\App.Infrastructure\App.Infrastructure.csproj" />
+    <ProjectReference Include="..\App.Persistance\App.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

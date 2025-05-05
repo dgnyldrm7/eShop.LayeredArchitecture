@@ -54,21 +54,21 @@ namespace App.Services.Implementations.ProductService
         {
             _productRepository.Add(product);
 
-            await unitOfWork.SaveChangesAsync();
+            await unitOfWork.SaveChangesAsync(CancellationToken.None);
         }
 
         public async Task UpdateProductAsync(Product product)
         {
             _productRepository.Update(product);
 
-            await unitOfWork.SaveChangesAsync();
+            await unitOfWork.SaveChangesAsync(CancellationToken.None);
         }
 
         public async Task DeleteProductAsync(int id)
         {
             _productRepository.Delete(id);
 
-            await unitOfWork.SaveChangesAsync();
+            await unitOfWork.SaveChangesAsync(CancellationToken.None);
         }
     }
 }
