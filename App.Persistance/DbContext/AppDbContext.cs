@@ -32,6 +32,7 @@ namespace App.Persistance.DbContext
 
         //Promotion Management
         public DbSet<Coupon> coupons { get; set; }
+        public DbSet<UserCoupon> userCoupons { get; set; }
 
         //Seller Management
         public DbSet<Seller> sellers { get; set; }

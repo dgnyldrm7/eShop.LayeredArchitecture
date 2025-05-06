@@ -2,5 +2,14 @@
 {
     public class MailService
     {
+        public MailService()
+        {
+            
+        }
+
+        public void SendEmailAsync()
+        {
+            //
+        }
     }
 }

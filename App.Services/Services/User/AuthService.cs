@@ -20,7 +20,6 @@ namespace App.Services.Services.User
             this.unitOfWork = unitOfWork;
         }
 
-
         /// <summary>
         /// 
         /// Kullanıcı için geniş ölçekli bir login doğrulaması sağlar.
@@ -85,15 +84,31 @@ namespace App.Services.Services.User
                 PhoneNumber = model.PhoneNumber,
             };
 
-            var result = await _userManager.CreateAsync(newUser, model.Password);
+            try
+            {
+                // Transaction!!
+                await unitOfWork.BeginTransactionAsync(CancellationToken.None);
 
-            if (!result.Succeeded)
-                return ServiceResult.FailResult(string.Join("; ", result.Errors.Select(e => e.Description)));
+                var result = await _userManager.CreateAsync(newUser, model.Password);
 
-            await unitOfWork.SaveChangesAsync(CancellationToken.None);
+                if (!result.Succeeded)
+                {
+                    await unitOfWork.RollbackAsync(CancellationToken.None);
+                    return ServiceResult.FailResult(string.Join("; ", result.Errors.Select(e => e.Description)));
+                }
 
-            return ServiceResult.SuccessResult("Başarıyla kayıt oluşturuldu.", newUser);
+                await unitOfWork.SaveChangesAsync(CancellationToken.None);
+                await unitOfWork.CommitAsync(CancellationToken.None);
+
+                return ServiceResult.SuccessResult("Başarıyla kayıt oluşturuldu.", newUser);
+            }
+            catch (Exception ex)
+            {
+                await unitOfWork.RollbackAsync(CancellationToken.None);
+                return ServiceResult.FailResult("Kayıt sırasında hata oluştu: " + ex.Message);
+            }
         }
+
 
         /// <summary>
         /// Sistemden çıkış yapmayı sağlar. Ekstra var olan cookiyi de silmeye yarar.
@@ -113,15 +128,28 @@ namespace App.Services.Services.User
             response.Cookies.Delete("Morlidocom", cookieOptions);
         }
 
-        public void ResetPassword()
+        /// <summary>
+        /// İlgili kullanıcının şifresini değiştirme service'idir.
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <param name="currentPassword"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        public async Task<ServiceResult> ChangePasswordAsync(string userEmail, string currentPassword, string newPassword)
         {
-            //
+            var user = await _userManager.FindByEmailAsync(userEmail);
+            if (user == null)
+                return ServiceResult.FailResult("Kullanıcı bulunamadı.");
+
+            var result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+
+            if (!result.Succeeded)
+                return ServiceResult.FailResult(string.Join("; ", result.Errors.Select(e => e.Description)));
+
+            await _signInManager.RefreshSignInAsync(user); // cookie güncelle
+            return ServiceResult.SuccessResult("Şifre başarıyla değiştirildi.");
         }
 
-        public void ChangePassword()
-        {
-            //change password
-        }
 
         public void ConfirmEmail()
         {
