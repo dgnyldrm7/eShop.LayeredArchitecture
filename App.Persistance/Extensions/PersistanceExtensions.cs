@@ -20,7 +20,7 @@ namespace App.Persistance.Extensions
             {
                 //var connectionString = configuration.GetSection(ConnectionStrings.Key).Get<ConnectionStrings>();
 
-                string connectionString = "Data Source=DESKTOP-5ESD6TM\\SQLEXPRESS;Initial Catalog=EcommerceDataBase;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+                string connectionString = "Data Source=TALHA\\SQLEXPRESS;Initial Catalog=EcommerceDataBase;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
                 options.UseSqlServer(connectionString, sqlServerOptionsAction =>
                 {
