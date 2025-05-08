@@ -21,6 +21,21 @@ builder.AddPersistanceDIContainer();
 
 builder.AddServiceDIContainer();
 
+//BURDA COOKIE ÝÞLEMLERÝNE GERÝ DÖN!!!
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.Name = "Morlidocom";
+
+    options.LoginPath = "/Account/Login";
+    options.LogoutPath = "/Account/Logout";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    options.SlidingExpiration = true;
+});
+
+
+
 builder.Logging.ClearProviders(); // önce tüm loggerlarý sil
 builder.Logging.AddConsole(); // sonra sadece ihtiyacýn olanlarý ekle (mesela Console)
 

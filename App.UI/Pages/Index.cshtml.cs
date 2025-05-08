@@ -1,5 +1,5 @@
 using App.Core.Entities.ProductManagment;
-using App.Services.Services;
+using App.Services.Services.Product;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace App.UI.Pages

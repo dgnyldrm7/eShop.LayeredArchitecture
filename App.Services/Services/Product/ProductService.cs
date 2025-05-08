@@ -3,7 +3,7 @@ using App.Core.Interfaces;
 using App.Core.Interfaces.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
-namespace App.Services.Services
+namespace App.Services.Services.Product
 {
     public class ProductService
     {

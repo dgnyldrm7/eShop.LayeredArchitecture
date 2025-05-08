@@ -7,6 +7,8 @@ namespace App.Core.Entities.UserManagment
 {
     public class AppUser : IdentityUser
     {
+        public string FirstName { get; set; } = default!;
+        public string LastName { get; set; } = default!;
         public DateTime CreatedDate { get; set; }
         public bool IsActive { get; set; }
         public List<Question>? Questions { get; set; }

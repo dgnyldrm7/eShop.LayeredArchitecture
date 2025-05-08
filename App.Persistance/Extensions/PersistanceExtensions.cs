@@ -34,6 +34,21 @@ namespace App.Persistance.Extensions
             builder.Services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
+            builder.Services.Configure<IdentityOptions>(options =>
+            {
+                /*                
+                    DefaultLockoutTimeSpan	5 başarısız girişten sonra 5 dakika kilitle
+                    MaxFailedAccessAttempts	Maksimum 5 deneme hakkı
+                    AllowedForNewUsers	Yeni kullanıcılara da kilitlenme kuralı uygula                
+                 */
+
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+                options.SignIn.RequireConfirmedEmail = false;
+            });
+
         }
 
         public static void AddInfrastructureServices(this WebApplicationBuilder builder)
